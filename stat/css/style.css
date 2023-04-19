@@ -1,203 +1,166 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-  }
+body{
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
   
-  body{
-      display: grid;
-      place-items: center;
-      height: 100vh;
-      /* background-color: black; */
-  }
+
+.box .img{
+    width: 60px;
+    height: 60px;
+    margin-left: 6px;
+    margin-bottom: 4px;
+}
   
-  section{
-      cursor: pointer;
-  }
+.box .img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
   
-  header{
-      width: 100%;
-      height: 14vh;
-      background-color: rgba(0, 0, 0, 0.288);
-      display: flex;
-      align-items: center;
-      color: white;
-  }
-  
-  .wrapper{
-      display: flex;
-      gap: 20px;
-  }
-  
-  
-  .box .img{
-      width: 60px;
-      height: 60px;
-     
-      margin-left: 6px;
-      margin-bottom: 4px;
-  }
-  
-  .box .img img{
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-  }
-  
-  .box .text{
-      width: 80px;
-  }
-  .box .text p{
-      font-weight: bold;
-      text-align: center;
-      font-size: 13px;
-  }
+.box .text{
+    width: 80px;
+}
+.box .text p{
+    font-weight: bold;
+    text-align: center;
+    font-size: 13px;
+}
   
   /* header end */
   
   /* content start */
   
-  .content{
-      width: 100%;
-      min-height: 130vh;
-      background-color:transparent ;
-      color: white;
-  }
+.content{
+    width: 100%;
+    min-height: 130vh;
+    /* background-color:transparent ; */
+    /* color: white; */
+}
+
+.content .h2{
+    padding: 20px 0 30px 0;
+}
   
-  .content .h2{
-      padding: 20px 0 30px 0;
-  }
+.card-item{
+    position: relative;
+}
+
+.card-header{
+    /* margin-bottom: 15px !important; */
+    padding: 0 0 15px 0 !important;
+    display: flex;
+    justify-content: space-between;
+    /* padding-right:20px; */
+    align-items: center;
+    background-color: white !important;
+    width:100% ;
+    height: 40px;
+}
   
-  .card-item{
-       
-      background-color: transparent;
-      position: relative;
-  }
+.card-hover{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    overflow: hidden;
+}
+
+.card-hover p{
+    color: rgb(18, 18, 197);
+    font-weight: bold;
+}
   
-  .card-header{
-      display: flex;
-      justify-content: space-between;
-      padding: 0 5px 20px 0;
-      padding-right:20px;
-      align-items: center;
-      width:100% ;
-      height: 40px;
-      background-color:transparent;
-  }
-  
-  .card-hover{
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      overflow: hidden;
-  }
-  
-  .card-hover p{
-      color: rgb(18, 18, 197);
-      font-weight: bold;
-  }
-  
-  .card-hover img{
-      width: 40px;
-      border-radius: 50%;
-  }
-  
-  .card-hover .overlay{
-      width: 380px;
-      margin: 40px 6px;
-      height:310px ;
-      position: absolute;
-      bottom:200%;
-      left:0;
-      top:;
-      background-color: black;
-      text-align: center;
-      transition: all 300ms;
-      color: white;
-      font-size: 12px;
-      border-bottom-right-radius: 15px;
-      border-bottom-left-radius: 15px;
-      animation: 900ms all;
-  }
-  
-  .card-hover:hover .overlay{
-      bottom:  0;
-      top: -10px;
-  }
-  .card-hover .overlay .top{
-      display: flex;
-      justify-content: space-between;
-      padding: 0 16px;
-      width: 100%;
-      height: 10vh;
-      font-size: 20px;
-      align-items: center;
-      gap: 10px;
-  }
-  
-  .card-hover .overlay .top p{
-      color: white;
-  } 
-  
-  .card-hover .overlay .top img{
-      width: 70px;
-  }
-  
-  .card-hover .overlay .center{
-      margin-top: 20px;
-      display: flex;
-      justify-content: space-around;
-  }
-  
-  .card-hover .overlay .img{
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      width: 100%;
-  }
-  
-  .card-hover .overlay .img img{
-      width: 130px;
-      height: 120px;
-     border-radius: inherit;
-  }
-  
-  .card-hover .overlay .footer{
-      width: 95%;
-      margin: 10px auto;
-  }
-  
-  .card-hover .overlay .footer .input{
-      width: 100%;
-      height: 30px;
-      background-color: rgb(54, 89, 243);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 8px;
-  }
-  
-  .card-center{
-      width: 100%;
-      height: 100%;
-  }
-  .card-center img{
-      width: 100%;
-      height: 100%;
-      /* border: 1px solid rgba(192, 192, 192, 0.39); */
-  }
-  
-  .card-center .card-top {
-      display: flex;
-      justify-content: space-between;
-      font-size: 14px;
-  }
-  
-  .card-center p{
-      font-size: 14px;
-  }
+.card-hover img{
+    width: 40px;
+    border-radius: 50%;
+}
+ 
+.card-center{
+    width: 100%;
+    height: 100%;
+}
+.card-center img{
+    width: 100%;
+    /* height: 100%; */
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.card-center p{
+    font-size: 14px;
+}
 
 .card14 {
     border: 1px solid rgba(0, 0, 0, 0.39);
 }
+
+.text1{
+    padding-bottom: 20px;
+}
+
+
+.len {
+    white-space: nowrap; 
+    width: 60px; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    border: 1px solid #000000;
+    border:none
+}
+
+.len-2 {
+    white-space: nowrap; 
+    width: 100px; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    border: 1px solid #000000;
+    border:none
+}
+
+/* popap1 */
+  
+  
+.overlay {
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0; 
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+}
+
+.overlay-content {
+    position: relative;
+    top: 15%;
+    /* width: 80%; */
+    text-align: center;
+    margin-top: 30px;
+    margin: auto;
+}
+
+
+
+.overlay button {
+     
+     
+    width: 20%;
+    padding: 15px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    display: block;
+}
+
+.overlay button:hover {
+    background: #bbb;
+}
+
+ 
