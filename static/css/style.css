@@ -138,9 +138,7 @@ body{
 
 .overlay-content {
     position: relative;
-    top: 15%;
-    /* width: 80%; */
-    text-align: center;
+    top: 45px;
     margin-top: 30px;
     margin: auto;
 }
@@ -148,8 +146,6 @@ body{
 
 
 .overlay button {
-     
-     
     width: 20%;
     padding: 15px;
     background: #ddd;
