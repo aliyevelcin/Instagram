@@ -2,9 +2,7 @@
     width: 25px;
     height: 23px;
     margin-bottom: 20px;
-
 }
-
 
 .icon-text{
     display: flex;
@@ -13,13 +11,10 @@
     cursor: pointer;
 }
 
-
 .p-1{
     font-family: sans-serif;
     margin-left: 10px;
-    
 }
-
 
 .profile_img{
     position: relative;
@@ -27,9 +22,7 @@
     border: 1px solid rgba(0, 0, 0, 0.242);
     height: 55px;
     margin: 20px;
-
 }
-
 
 .a-tag{
     text-decoration: none;
@@ -38,12 +31,9 @@
     font-size: 13px;
 }
 
-
 .div-profile{
     display: flex;
     align-items: center;
-    
-   
 }
 
 .main-profile{
@@ -58,5 +48,4 @@
     border: 1px solid rgba(0, 0, 0, 0.242);
     height: 30px;
     margin: 20px;
-
 }

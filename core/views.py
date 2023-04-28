@@ -14,5 +14,6 @@ def explore(request):
         'posts':posts
     }
     return render(request, 'explore.html', context)
- 
+
+
 # Create your views here.

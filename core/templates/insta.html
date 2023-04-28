@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{% static '/css/resp.css' %}">
     <link rel="stylesheet" href="{% static '/css/style.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="icon" href="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png' %}" >
+    <link rel="icon" href="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
 </head>
 <body>
@@ -29,7 +29,7 @@
                     <img class="icons" src="{% static '/img/search.png' %}" alt="">
                     <p class="p-1">Search</p>
                 </div>
-                <a style="text-decoration: none;color: black;" href="explore.html">
+                <a style="text-decoration: none;color: black;" href="exp/">
                 <div class="icon-text">
                      
                     <img class="icons" src="{% static '/img/explore.png' %}" alt="">
@@ -70,27 +70,30 @@
 
             </div>
             <div class="col-md-6">
-                <div style="width: 700px; overflow-y: hidden; overflow-x: scroll;">
+                <div class="ove" style="width: 700px; overflow-y: hidden; overflow-x: scroll;">
                     <ul class="el" style="list-style-type: none;display: flex;padding-left: 20px;padding-right: 20px;padding-top: 35px;"   >
                         <li>
-                            <a href="" style="text-decoration: none;color: black;">
-                                <div   class="box">
-                                    <div class="img">
-                                        <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
+
+
+                           
+
+
+                            <div   >
+                            <a href=""  style="text-decoration: none;color: black;">
+                                <div    class="box">
+                                    <div    class="img">
+                                        <img   src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
                                     </div>
-     
-                                       
-                                    
-    
                                     <div  class="text">
                                         <p   class="len" >username</p> 
                                     </div>
                                 </div>
                             </a>
+                            </div>
                         </li>
                         <li>
                             <a href="" style="text-decoration: none;color: black;">
-                                <div   class="box">
+                                <div    class="box">
                                     <div class="img">
                                         <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
                                     </div>
@@ -237,37 +240,28 @@
                     <main class="content" >
                         <div class="res-1 " style="padding-bottom: 50px;padding-left: 90px;padding-right: 90px;">
                             {% for post in posts %}
-                            <div class="card-item" style="background-color: #ffffff;">
+                            <div class="card-item" style="background-color: #ffffff;padding-top: 30px;">
                                 <div class="card-header">
                                  <div class="card-hover">
                                      <img style="cursor: pointer;" src="{% static '/img/img-2.jpeg' %}" alt="">
-                                      <span  style="color: black;margin-left: 10px;cursor: pointer;">{{post.username}}</span>
-                                      
-
-                                      <div id="myOverlay" class="overlay"  >
-                                        <div class="overlay-content" style="padding-left: 50px;" >
-                                          <form action=" ">
-                                            
-                                            <button style="outline: none; " type="submit">Şikayet Et</button>
-                                            <button style="outline: none;" type="submit">Takibi Bırak </button> 
-                                            <button style="outline: none;" type="submit">  Favorilere ekle</button>
-                                            <button style="outline: none;" type="submit"> Paylaş...  </button>
-                                            <button style="outline: none;" type="submit"> Bağlantıyı Kopyala  </button>
-                                            <button style="outline: none;" type="submit"> Sitene dön   </button>
-                                            <button style="outline: none;" type="submit"> Bu hesap hakkında </button> 
-                                            <button style="outline: none;" type="submit" class="closebtn" onclick="closeSearch()" title="CloseOverlay">İptal </button>
-
-
-                                          </form>
-                                        </div>
-                                      </div>
-                                      
-                                       
+                                      <span  style="color: black;margin-left: 10px;cursor: pointer;">{{post.username}}</span>  
+                                    <div class="form-popup" id="myForm" style="padding-left: 170px;border-radius: 50px;">
+                                        <form action="/action_page.php" class="form-container">
+                                            <button type="submit" style="color:#ff0015;" class="btn">Şikayet Et</button>
+                                            <button type="submit" style="color:#ff0015;" class="btn">Takibi Bırak</button>
+                                            <button type="submit" class="btn">Favorilere ekle</button>
+                                            <button type="submit" class="btn">Paylaş..</button>
+                                            <button type="submit" class="btn">Bağlantıyı Kopyala</button>
+                                            <button type="submit" class="btn">Sitene dön</button>
+                                            <button type="submit" class="btn">Bu hesap hakkında </button>
+                                            <button type="submit" class="btn">Sitene dön</button>
+                                            <button type="button" class="btn cancel" onclick="closeForm()">İptal</button>
+                                        </form>
+                                    </div>    
                                  </div>
-                                     <img class="open1"  class="openBtn" onclick="openSearch()" style="width: 25px;cursor: pointer;color: white;" src="{% static '/img/salam.png' %}" alt="">
-                                 
+                                     <img class="open1"  class="openBtn" onclick="openForm()"style="width: 25px;cursor: pointer;color: white;" src="{% static '/img/salam.png' %}" alt="">
                                 </div>
-                                <div class="card-center card" >
+                                <div class="card-center card"  >
                                     <img src="{{post.image.url}}" alt="" srcset="">
                                 <div style="padding: 10px;">
                                   <div class="card-top" style="padding-bottom: 10px;">
@@ -276,15 +270,12 @@
                                         <img style="width: 20px;cursor: pointer;" src="{% static '/img/heart.png' %}" alt="">
                                         <img style="width: 20px;margin-left: 10px;cursor: pointer;" src="{% static '/img/chat.png' %}" alt="">
                                         <img style="width: 20px;margin-left: 10px;cursor: pointer;" src="{% static '/img/send.png' %}" alt="">
-
-
-                                    </div>
-                                        
+                                    </div>    
                                     <div>
                                         <img style="width: 20px;margin-left: 5px;cursor: pointer;" src="{% static '/img/ribbon.png' %}" alt="">
                                     </div>  
                                   </div>
-                                  <p style="color: rgb(0, 0, 0);cursor: pointer;">{{post.likes}}likes</p>
+                                  <p onclick="openSearchh()" style="color: rgb(0, 0, 0);cursor: pointer;">{{post.likes}}likes</p>
                                   <div style="display: flex;">
                                   <h4 style="display: flex; gap: 4px; color: black;font-size: 16px;cursor: pointer;margin-top: -10px;" > {{post.username}}</h4>
                                     <p     class="len-2" style=" margin-top: -10px; color: rgb(0, 0, 0);margin-left: 8px;font-size: 14px;">{{post.description}}</p> 
@@ -298,17 +289,14 @@
                             {% endfor %}
                         </div> 
                     </main>
-            
                 </section>  
             </div>
               
 
 
-                
-           
             <div class="col-md-4 basqa">
-                <div class="main-profile" >
-                    <img class="profile_img" src="{% static '/img/profile.png' %}" alt="">
+                <div    class="main-profile" >
+                    <img  class="profile_img" src="{% static '/img/profile.png' %}" alt="">
                     <a class="a-tag" href="">baglan.0_</a>
                     <a href=""><button style="font-size: 13px; font-family: sans-serif; margin-left: 100px; background-color: white; border: none; color: #1877F2;">Switch</button></a>
                 </div>
@@ -342,7 +330,7 @@
                         <a class="a-tag" href="">baglan.0_</a>
                         <p style="font-size: 13px; color:rgba(0, 0, 0, 0.6);">Follow by aliyevvletif</p>
                     </div>
-                    <a href=""><button style="font-size: 13px; font-family: sans-serif; margin-left: 80px; background-color: white; border: none; color: #1877F2;">Follow</button></a>
+                    <a href="#"><button style="font-size: 13px; font-family: sans-serif; margin-left: 80px; background-color: white; border: none; color: #1877F2;">Follow</button></a>
                 </div>
 
                 <div class="div-profile" >
@@ -362,37 +350,69 @@
                     </div>
                     <a href=""><button style="font-size: 13px; font-family: sans-serif; margin-left: 80px; background-color: white; border: none; color: #1877F2;">Follow</button></a>
                 </div>
-
             </div>
              </div>
         </div>
-     
+    
 
 
+        <div id="myOverlayy" class="overlayy">
+            <span class="closebtnn" onclick="closeSearchh()" title="Close Overlay">×</span>
+            <div class="overlayy-content">
+              <form action=" ">
+                     <div class="sec" > 
+                  <div class="cardd">
+                      <div class="cardd-top">
+                          <div class="cardd-loading"></div>
+                          <div class="headerrr">
+                              <div class="leftt">
+                                  <img 			src="https://iatkv.tmgrup.com.tr/a70cc3/616/321/0/0/1200/624?u=https%3A%2F%2Fitkv.tmgrup.com.tr%2F2020%2F12%2F26%2Fyeni-yilda-kurtlar-vadisi-ve-polat-alemdar-surprizi-vaziyet-alin-kursunlar-havada-gezecek-1609002491121.jpg" alt="">
+                                   <span>elcin.aliyev</span>
+                                   <span>3h</span>
+                              </div>
+                              <div class="rightt">
+                                  <i class="fa-solid fa-pause"></i>
+                                  <i class="fa-solid fa-volume-xmark"></i>
+                                  <i class="fa-solid fa-ellipsis"></i>
+                              </div>
+                          </div>
+                          <div class="cardd-image">
+                              <div class="bgg"></div>
+                          </div>
+                      </div>
+                      <footer style="display: flex;">
+                          <input type="textt" placeholder="Relp to elcin.aliyev..">
+                          <h2>
+                               <i class="fa-solid fa-heart icoo"></i> 
+                              <i class="fa-regular fa-paper-plane"></i>
+                          </h2>
+                      </footer>
+                  </div>
+              </div>
+              </form>
+            </div>
+          </div>
+
+          <script>
+            function openSearchh() {
+              document.getElementById("myOverlayy").style.display = "block";
+            }
+            
+            function closeSearchh() {
+              document.getElementById("myOverlayy").style.display = "none";
+            }
+            </script>
+                 
 <!-- popap -->
-<script>
-    function openSearch() {
-      document.getElementById("myOverlay").style.display = "block";
-    }
-    
-    function closeSearch() {
-      document.getElementById("myOverlay").style.display = "none";
-    }
+<!-- <script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
 
-</script>        
-
-
-<!-- fullscrenn -->
-<script>
-    function openSearch2() {
-      document.getElementById("myOverlay2").style.display = "block";
-    }
-    
-    function closeSearch2() {
-      document.getElementById("myOverlay2").style.display = "none";
-    }
-</script>
-<!-- fullscrenn -->
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script> -->
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"crossorigin="anonymous"></script>
