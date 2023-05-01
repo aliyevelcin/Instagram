@@ -18,7 +18,7 @@
         <div class="row">
             <div  style="border-right: 1px rgb(185, 185, 185) solid;" class="col-md-2">
                 <div style="cursor: pointer;">
-                    <h4 style=" color: black; padding: 15px; ">Instagram</h4>
+                    <h4 class="insta" style=" color: black; padding: 15px; ">Instagram</h4>
                 </div>
                 <div class="icon-text">
                     <img class="icons" src="{% static '/img/house.png' %}" alt="">
@@ -29,12 +29,14 @@
                     <img class="icons" src="{% static '/img/search.png' %}" alt="">
                     <p class="p-1">Search</p>
                 </div>
-                <a style="text-decoration: none;color: black;" href="exp/">
+                 
+                <a  style="text-decoration: none;color: black;"  href="{% url 'core:explore' %}">
                 <div class="icon-text">
                      
                     <img class="icons" src="{% static '/img/explore.png' %}" alt="">
                     <p class="p-1">Explore</p>
-                </div></a>
+                </div> 
+                </a>
 
                 <div class="icon-text" >
                     <img class="icons" src="{% static '/img/reels.png' %}" alt="">
@@ -55,12 +57,13 @@
                     <img class="icons" src="{% static '/img/create.png' %}" alt="">
                     <p class="p-1">Create</p>
                 </div>
-
+                
+                <a  style="text-decoration: none;color: black;"  href="">
                 <div class="icon-text">
                     <img class="icons" src="{% static '/img/profile.png' %}" alt="">
                     <p class="p-1">Profile</p>
                 </div>
-
+                </a>
                 <div class="icon-text">
                     <img class="icons" src="{% static '/img/more.png' %}" alt="">
                     <p class="p-1">More</p>
@@ -69,26 +72,19 @@
 
 
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 md-6">
                 <div class="ove" style="width: 700px; overflow-y: hidden; overflow-x: scroll;">
                     <ul class="el" style="list-style-type: none;display: flex;padding-left: 20px;padding-right: 20px;padding-top: 35px;"   >
                         <li>
-
-
-                           
-
-
                             <div   >
-                            <a href=""  style="text-decoration: none;color: black;">
                                 <div    class="box">
-                                    <div    class="img">
+                                    <div   onclick="openSearchh()" class="img">
                                         <img   src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
                                     </div>
                                     <div  class="text">
                                         <p   class="len" >username</p> 
                                     </div>
                                 </div>
-                            </a>
                             </div>
                         </li>
                         <li>
@@ -244,9 +240,13 @@
                                 <div class="card-header">
                                  <div class="card-hover">
                                      <img style="cursor: pointer;" src="{% static '/img/img-2.jpeg' %}" alt="">
-                                      <span  style="color: black;margin-left: 10px;cursor: pointer;">{{post.username}}</span>  
-                                    <div class="form-popup" id="myForm" style="padding-left: 170px;border-radius: 50px;">
-                                        <form action="/action_page.php" class="form-container">
+                                     <a href="{% url 'accounts:profile_account' post.account.slug%}">
+                                      <span  style="color: black;margin-left: 10px;cursor: pointer;font-size: 20px;">{{post.account.username}}</span>  
+
+                                     </a>
+                                    <div style="border-radius: 50px;">
+                                    <div class="form-popup" id="myForm" style="padding-left: 170px;border-radius: 50px;padding-top: 10px; ">
+                                        <form style="border-radius: 50px;" action="" class="form-container">
                                             <button type="submit" style="color:#ff0015;" class="btn">Şikayet Et</button>
                                             <button type="submit" style="color:#ff0015;" class="btn">Takibi Bırak</button>
                                             <button type="submit" class="btn">Favorilere ekle</button>
@@ -257,11 +257,12 @@
                                             <button type="submit" class="btn">Sitene dön</button>
                                             <button type="button" class="btn cancel" onclick="closeForm()">İptal</button>
                                         </form>
-                                    </div>    
+                                    </div> 
+                                    </div>
                                  </div>
                                      <img class="open1"  class="openBtn" onclick="openForm()"style="width: 25px;cursor: pointer;color: white;" src="{% static '/img/salam.png' %}" alt="">
                                 </div>
-                                <div class="card-center card"  >
+                                <div class="card-center card"   >
                                     <img src="{{post.image.url}}" alt="" srcset="">
                                 <div style="padding: 10px;">
                                   <div class="card-top" style="padding-bottom: 10px;">
@@ -275,9 +276,9 @@
                                         <img style="width: 20px;margin-left: 5px;cursor: pointer;" src="{% static '/img/ribbon.png' %}" alt="">
                                     </div>  
                                   </div>
-                                  <p onclick="openSearchh()" style="color: rgb(0, 0, 0);cursor: pointer;">{{post.likes}}likes</p>
+                                  <p   style="color: rgb(0, 0, 0);cursor: pointer;">{{post.likes}}likes</p>
                                   <div style="display: flex;">
-                                  <h4 style="display: flex; gap: 4px; color: black;font-size: 16px;cursor: pointer;margin-top: -10px;" > {{post.username}}</h4>
+                                  <h4 style="display: flex; gap: 4px; color: black;font-size: 16px;cursor: pointer;margin-top: -10px;" > {{post.account.username}}</h4>
                                     <p     class="len-2" style=" margin-top: -10px; color: rgb(0, 0, 0);margin-left: 8px;font-size: 14px;">{{post.description}}</p> 
                                 </div>
                                     <p style="font-weight: 200; color: darkgrey;margin-top: -10px;">1 yorumun tümünü gör
@@ -294,7 +295,7 @@
               
 
 
-            <div class="col-md-4 basqa">
+            <div class="col-md-4 basqa" style="padding-left: 50px;">
                 <div    class="main-profile" >
                     <img  class="profile_img" src="{% static '/img/profile.png' %}" alt="">
                     <a class="a-tag" href="">baglan.0_</a>
@@ -404,7 +405,7 @@
             </script>
                  
 <!-- popap -->
-<!-- <script>
+<script>
 function openForm() {
   document.getElementById("myForm").style.display = "block";
 }
@@ -412,7 +413,7 @@ function openForm() {
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
-</script> -->
+</script>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"crossorigin="anonymous"></script>

@@ -15,5 +15,10 @@ def explore(request):
     }
     return render(request, 'explore.html', context)
 
-
+def login(request):
+    posts = Post.objects.all()
+    context = {
+        'posts':posts
+    }
+    return render(request, 'login.html', context)
 # Create your views here.

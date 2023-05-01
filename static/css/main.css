@@ -49,3 +49,8 @@
     height: 30px;
     margin: 20px;
 }
+
+a{
+    text-decoration: none !important;
+    color: black !important;
+}

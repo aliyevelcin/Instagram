@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from accounts.models import User
 
-def profile_account(request, id):
-    user = User.objects.get(pk=id)
+def profile_account(request, slug):
+    user = User.objects.get(slug=slug)
     # print(user.posts.all())
     context = {
         'user':user
