@@ -69,15 +69,18 @@
                     </a>
                 </div>
                 
-                <a style="text-decoration: none;color: black;" href="{% url 'accounts:profile_account' 1%}">
+                <a style="text-decoration: none;color: black;" href="{% url 'accounts:profile_account' request.user.slug %}">
                     <div class="icon-text"> 
-
-                    <img class="icons" src="{% static '/img/profile.png' %}" alt="">
-                    <p class="p-1">Profile</p>
-                </div>
+                        {%if request.user.image %}
+                            <img class="icons" style="border-radius: 20px;" src="{{request.user.image.url}}" alt="">
+                        {%else %}
+                            <img class="icons" src="{% static '/img/profile.png'%}" alt="">
+                        {%endif%} 
+                        <p class="p-1">Profile</p>
+                    </div>
                 </a>
 
-                <div class="icon-text">
+                <div class="icon-text" style="padding-top: 15px;">
                     <img class="icons" src="{% static '/img/more.png' %}" alt="">
                     <a style="text-decoration: none;color: black;" href="#">
                     <p class="p-1">More</p>
@@ -101,48 +104,77 @@
                                                     </div>
                                                     <div class="full" style="border: 1px solid rgba(0,0,0,.125);padding-top: 15px;">
                                                      <div class="card-header"  >
-                                                     <div class="card-hover" style="padding-top: 15px;">
-                                                        <a href="{% url 'core:explore' %}"> 
-                                                        <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;" src="{{user.image.url}}" alt="">
-                                                          <span  style="color: black;margin-left: 10px;cursor: pointer;">{{post.account.username }}</span>
-                                                        </a> 
+                                                     <div class="card-hover" >
+                                                        {%if request.user.image %}
+                                                            <a href="{% url 'accounts:profile_account' request.user.slug   %}"> 
+                                                                <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;margin-left: 12px;" src="{{request.user.image.url}}" alt="">
+                                                                <span  style="color: black;margin-left: 10px;cursor: pointer;">{{post.account.username }}</span>
+                                                            </a> 
+                                                        {%else%}
+                                                            <a href="{% url 'accounts:profile_account' request.user.slug   %}"> 
+                                                                <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;" src="{% static '/img/profile.png'%}" alt="">
+                                                                <span  style="color: black;margin-left: 10px;cursor: pointer;">{{post.account.username }}</span>
+                                                            </a> 
+                                                        {%endif%}
                                                      </div>
                                                          <img class="open1"   style="width: 25px;cursor: pointer;color: white;" src="{% static '/img/salam.png' %}" alt="">
                                                     </div>
                                                 <div style="padding: 10px;">
                                                      <div style="width: 500px;overflow-y: scroll;overflow-x: hidden;height: 300px;">
                                                         <div>
-                                                        <div class="card-hover " style="padding-top: 15px;" >
-                                                            <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;" src="{{user.image.url}}" alt="">
+                                                        <div class="card-hover "  >
+                                                        {%if request.user.image %}
+                                                            <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;" src="{{request.user.image.url}}" alt="">
                                                             <span   style=" margin-left: 20px;cursor: pointer;color: black;">{{post.account.username }}      
-                                                            <span   class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer none; ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque ducimus labore?</span>
+                                                            <span   class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer none; "> {{post.description}}</span>
                                                             </span>
+                                                        {%endif%}
                                                         </div>
-                                                        <p style="color: #989899;margin-left: 60px;cursor: pointer;">1h  378 beğenme Yanıtla Çevirsine bax </p>
+                                                        <p style="color: #989899;margin-left: 60px;cursor: pointer;font-size: 12px;">1h  378 beğenme Yanıtla Çevirsine bax </p>
                                                         </div>
-                                                        <div class="card-hover" style="padding-top: 15px;">
-                                                            <img style="cursor: pointer;" src="{% static '/img/img-2.jpeg' %}" alt="">
-                                                            <span  style="color: rgb(5, 5, 5);margin-left: 20px;cursor: pointer;">username    
-                                                            <span class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque ducimus labore?</span>
-                                                        </span>
+                                                        <div>
+                                                            <div class="card-hover "  >
+                                                            {%if request.user.image %}
+                                                                <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;" src="{{request.user.image.url}}" alt="">
+                                                                <span   style=" margin-left: 20px;cursor: pointer;color: black;">{{post.account.username }}      
+                                                                <span   class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer none; "> {{post.description}}</span>
+                                                                </span>
+                                                            {%endif%}
+                                                            </div>
+                                                            <p style="color: #989899;margin-left: 60px;cursor: pointer;font-size: 12px;">1h  378 beğenme Yanıtla Çevirsine bax </p>
+                                                            </div>
+                                                            <div>
+                                                                <div class="card-hover "  >
+                                                                {%if request.user.image %}
+                                                                    <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;" src="{{request.user.image.url}}" alt="">
+                                                                    <span   style=" margin-left: 20px;cursor: pointer;color: black;">{{post.account.username }}      
+                                                                    <span   class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer none; "> {{post.description}}</span>
+                                                                    </span>
+                                                                {%endif%}
+                                                                </div>
+                                                                <p style="color: #989899;margin-left: 60px;cursor: pointer;font-size: 12px;">1h  378 beğenme Yanıtla Çevirsine bax </p>
+                                                                </div>
+                                                        <div>
+                                                            <div class="card-hover "  >
+                                                                {%if request.user.image %}
+                                                                    <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;" src="{{request.user.image.url}}" alt="">
+                                                                    <span   style=" margin-left: 20px;cursor: pointer;color: black;">{{post.account.username }}      
+                                                                    <span   class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer none; "> {{post.description}}</span>
+                                                                    </span>
+                                                                {%endif%}
+                                                            </div>
+                                                            <p style="color: #989899;margin-left: 60px;cursor: pointer;font-size: 12px;">1h  378 beğenme Yanıtla Çevirsine bax </p>
                                                         </div>
-                                                        <div class="card-hover" style="padding-top: 15px;">
-                                                            <img style="cursor: pointer;" src="{% static '/img/img-2.jpeg' %}" alt="">
-                                                            <span  style="color: rgb(5, 5, 5);margin-left: 20px;cursor: pointer;">username     
-                                                            <span class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque ducimus labore?</span>
-                                                            </span>
-                                                        </div>
-                                                        <div class="card-hover" style="padding-top: 15px;">
-                                                            <img style="cursor: pointer;" src="{% static '/img/img-2.jpeg' %}" alt="">
-                                                            <span  style="color: rgb(5, 5, 5);margin-left: 20px;cursor: pointer;">username     
-                                                            <span class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque ducimus labore?</span>
-                                                        </span>
-                                                        </div>
-                                                        <div class="card-hover" style="padding-top: 15px;">
-                                                            <img style="cursor: pointer;" src="{% static '/img/img-2.jpeg' %}" alt="">
-                                                            <span  style="color: rgb(5, 5, 5);margin-left: 20px;cursor: pointer;">username     
-                                                            <span class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque ducimus labore?</span>
-                                                        </span>
+                                                        <div>
+                                                            <div class="card-hover "  >
+                                                                {%if request.user.image %}
+                                                                    <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;" src="{{request.user.image.url}}" alt="">
+                                                                    <span   style=" margin-left: 20px;cursor: pointer;color: black;">{{post.account.username }}      
+                                                                    <span   class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer none; "> {{post.description}}</span>
+                                                                    </span>
+                                                                {%endif%}
+                                                            </div>
+                                                            <p style="color: #989899;margin-left: 60px;cursor: pointer;font-size: 12px;">1h  378 beğenme Yanıtla Çevirsine bax </p>
                                                         </div>
                                                     </div>   
                                                     <div class="card-top" style="padding-bottom: 10px;">
@@ -157,7 +189,7 @@
                                                         <img style="width: 20px;margin-left: 5px;cursor: pointer;" src="{% static '/img/ribbon.png' %}" alt="">
                                                     </div>  
                                                   </div>
-                                                  <p style="color: rgb(0, 0, 0);cursor: pointer;">18,111 likes</p>
+                                                  <p style="color: rgb(0, 0, 0);cursor: pointer;">{{post.likes}} likes</p>
                                                   <div style="display: flex;">
                                                   
                                                 </div>

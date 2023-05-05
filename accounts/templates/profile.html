@@ -77,13 +77,17 @@
                     </a>
                     <a style="text-decoration: none;color: black;" href="#">
                         <div class="icon-text">
+                        {%if request.user.image %}
+                            <img class="icons"  style="border-radius: 20px;"  src="{{request.user.image.url}}" alt="">
+                        {%else %}
                             <img class="icons" src="{% static '/img/profile.png'%}" alt="">
+                        {%endif%} 
                             <p class="p-1">Profile</p>
                         </div>
                     </a>
 
                     <a style="text-decoration: none;color: black;" href="#">
-                        <div class="icon-text">
+                        <div class="icon-text" style="padding-top: 15px;">
                             <img class="icons" src="{% static '/img/more.png'%}"alt="">
                             <p class="p-1">More</p>
                         </div>
@@ -93,27 +97,36 @@
 
             <div class="col-md-10 md-10">
                 <div class="container-fluid"  >
-                    <div style="display: flex;  padding-left: 180px;padding-top: 20px;">
-                        <img class="profile-png" style="border-radius: 50%;width: 140px;height: 140px; " src="{{user.image.url}}" alt=""></a>
+                    <div class="img-pad" style="display: flex;  padding-left: 180px;padding-top: 20px;">
+                        {%if request.user.image %}
+                            <a href="#">
+                            <img class="profile-png" style="border-radius: 50%;width: 140px;height: 140px; " src="{{request.user.image.url}}" alt="">
+                            </a>
+                        {%else %}
+                            <a href="#">
+                            <img class="profile-png" style="border-radius: 50%;width: 140px;height: 140px; " src="{% static '/img/profile.png'%}" alt="">
+                            </a>
+
+                        {%endif%}
                         <div style="padding-left: 50px;">
                             <div style="display: flex; padding: 10px; ">
-                                <h5 style="font-family: sans-serif;" >{{user.username}}</h5>
-                                <a href=""><button class="edit-btn">Edit profile</button></a>
-                                <a href=""><img style="width: 26px; margin-left: 15px" src="{% static '/img/PNG.png'%}" alt=""></a>
+                                <h5 style="font-family: sans-serif;" >{{request.user.username}}</h5>
+                                <a href="#"><button class="edit-btn">Edit profile</button></a>
+                                <a href="#"><img style="width: 26px; margin-left: 15px" src="{% static '/img/PNG.png'%}" alt=""></a>
                             </div> 
                             <div style="display: flex; justify-content: space-around;">
-                                <a class="a-tag" href="">0 posts</a>
-                                <a class="a-tag" href="">{{user.followers}} followers</a>
-                                <a class="a-tag"href="">{{user.following}}following   </a>  
+                                <a class="a-tag" href="#">{{request.user.posts.all.count}} posts</a>
+                                <a class="a-tag" href="#">{{request.user.followers}} followers</a>
+                                <a class="a-tag"href="#">{{request.user.following}} following   </a>  
                             </div>
                         </div>  
                     </div>
                     <div  style="border-bottom: 1px rgb(185, 185, 185) solid; padding-top: 35px; width: 100%;"></div>    
                 </div>
                 <div class="main container-fluid">
-                    <a class="post-tag" href=""><img class="posts-img" src="{% static '/img/feed.png'%}" alt="">POSTS</a>
-                    <a class="post-tag" href=""><img class="posts-img" src="{% static '/img/mark.png'%}" alt="">SAVED</a>
-                    <a class="post-tag" href=""><img class="posts-img" src="{% static '/img/tag.png'%}" alt="">TAGGED</a>
+                    <a class="post-tag" href="#"><img class="posts-img" src="{% static '/img/feed.png'%}" alt="">POSTS</a>
+                    <a class="post-tag" href="#"><img class="posts-img" src="{% static '/img/mark.png'%}" alt="">SAVED</a>
+                    <a class="post-tag" href="#"><img class="posts-img" src="{% static '/img/tag.png'%}" alt="">TAGGED</a>
                 </div>
 
                 
@@ -124,11 +137,8 @@
                 <div  class="col-md-10 trend post"  >
                     <div class="container-fluid">
                         <div class="row" style="padding-top: 30px; justify-content: center;">
-                            {%if user.posts.all %}
-                            {% for post in user.posts.all %}  
-                               
-                            
-
+                            {%if request.user.posts.all %}
+                            {% for post in request.user.posts.all %}  
                             <div id="myOverlay{{post.id}}" class="overlay">
                                 <span class="closebtn" onclick="closeSearch{{post.id}}()" title="Close Overlay">×</span>
                                 <div class="overlay-content">
@@ -141,8 +151,8 @@
                                                    <div class="full" style="border: 1px solid rgba(0,0,0,.125);padding-top: 15px;">
                                                         <div class="card-header"  >
                                                             <div class="card-hover" style="padding-top: 15px;">
-                                                            <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px; " src="{{user.image.url}}" alt="">
-                                                            <span  style="color: black;margin-left: 10px;cursor: pointer;">{{user.username}}</span>
+                                                            <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;margin-left: 12px; " src="{{request.user.image.url}}" alt="">
+                                                            <span  style="color: black;margin-left: 10px;cursor: pointer;">{{request.user.username}}</span>
                                                             </div>
                                                             <img class="open1"   style="width: 25px;cursor: pointer;color: white;" src="{% static '/img/salam.png' %}" alt="">
                                                         </div>
@@ -150,37 +160,101 @@
                                                         <div style="padding: 10px;">
                                                             <div style="width: 500px;overflow-y: scroll;overflow-x: hidden;height: 300px;">
                                                                 <div>
-                                                                    <div class="card-hover " style="padding-top: 15px;" >
-                                                                        <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;" src="{{user.image.url}}" alt="">
-                                                                        <span   style=" margin-left: 20px;cursor: pointer;color: black;">{{user.username}}      
-                                                                        <span   class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer none; ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque ducimus labore?</span>
+                                                                    <div class="card-hover "  >
+                                                                    {%if request.user.image %}
+                                                                        <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;" src="{{request.user.image.url}}" alt="">
+                                                                        <span   style=" margin-left: 20px;cursor: pointer;color: black;">{{post.account.username }}      
+                                                                        <span   class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer none; "> {{post.description}}</span>
                                                                         </span>
+                                                                    {%endif%}
                                                                     </div>
-                                                                    <p style="color: #989899;margin-left: 60px;cursor: pointer;">1h  378 beğenme Yanıtla Çevirsine bax </p>
+                                                                    <p style="color: #989899;margin-left: 60px;cursor: pointer;font-size: 12px;">1h  378 beğenme Yanıtla Çevirsine bax </p>
                                                                 </div>
                                                                 
-                                                                <div class="card-hover" style="padding-top: 15px;">
-                                                                    <img style="cursor: pointer;" src="{% static '/img/img-2.jpeg' %}" alt="">
-                                                                    <span  style="color: rgb(5, 5, 5);margin-left: 20px;cursor: pointer;">username    
-                                                                    <span class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque ducimus labore?</span>
-                                                                    </span>
+                                                                <div>
+                                                                    <div class="card-hover "  >
+                                                                    {%if request.user.image %}
+                                                                        <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;" src="{{request.user.image.url}}" alt="">
+                                                                        <span   style=" margin-left: 20px;cursor: pointer;color: black;">{{post.account.username }}      
+                                                                        <span   class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer none; "> {{post.description}}</span>
+                                                                        </span>
+                                                                    {%endif%}
+                                                                    </div>
+                                                                    <p style="color: #989899;margin-left: 60px;cursor: pointer;font-size: 12px;">1h  378 beğenme Yanıtla Çevirsine bax </p>
                                                                 </div>
-                                                                <div class="card-hover" style="padding-top: 15px;">
-                                                                    <img style="cursor: pointer;" src="{% static '/img/img-2.jpeg' %}" alt="">
-                                                                    <span  style="color: rgb(5, 5, 5);margin-left: 20px;cursor: pointer;">username     
-                                                                    <span class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque ducimus labore?</span>
-                                                                    </span>
+
+                                                                <div>
+                                                                    <div class="card-hover "  >
+                                                                    {%if request.user.image %}
+                                                                        <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;" src="{{request.user.image.url}}" alt="">
+                                                                        <span   style=" margin-left: 20px;cursor: pointer;color: black;">{{post.account.username }}      
+                                                                        <span   class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer none; "> {{post.description}}</span>
+                                                                        </span>
+                                                                    {%endif%}
+                                                                    </div>
+                                                                    <p style="color: #989899;margin-left: 60px;cursor: pointer;font-size: 12px;">1h  378 beğenme Yanıtla Çevirsine bax </p>
                                                                 </div>
-                                                                <div class="card-hover" style="padding-top: 15px;">
-                                                                    <img style="cursor: pointer;" src="{% static '/img/img-2.jpeg' %}" alt="">
-                                                                    <span  style="color: rgb(5, 5, 5);margin-left: 20px;cursor: pointer;">username     
-                                                                    <span class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque ducimus labore?</span></span>
+
+                                                                <div>
+                                                                    <div class="card-hover "  >
+                                                                    {%if request.user.image %}
+                                                                        <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;" src="{{request.user.image.url}}" alt="">
+                                                                        <span   style=" margin-left: 20px;cursor: pointer;color: black;">{{post.account.username }}      
+                                                                        <span   class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer none; "> {{post.description}}</span>
+                                                                        </span>
+                                                                    {%endif%}
+                                                                    </div>
+                                                                    <p style="color: #989899;margin-left: 60px;cursor: pointer;font-size: 12px;">1h  378 beğenme Yanıtla Çevirsine bax </p>
                                                                 </div>
-                                                                <div class="card-hover" style="padding-top: 15px;">
-                                                                    <img style="cursor: pointer;" src="{% static '/img/img-2.jpeg' %}" alt="">
-                                                                    <span  style="color: rgb(5, 5, 5);margin-left: 20px;cursor: pointer;">username     
-                                                                    <span class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque ducimus labore?</span></span>
+
+                                                                <div>
+                                                                    <div class="card-hover "  >
+                                                                    {%if request.user.image %}
+                                                                        <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;" src="{{request.user.image.url}}" alt="">
+                                                                        <span   style=" margin-left: 20px;cursor: pointer;color: black;">{{post.account.username }}      
+                                                                        <span   class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer none; "> {{post.description}}</span>
+                                                                        </span>
+                                                                    {%endif%}
+                                                                    </div>
+                                                                    <p style="color: #989899;margin-left: 60px;cursor: pointer;font-size: 12px;">1h  378 beğenme Yanıtla Çevirsine bax </p>
                                                                 </div>
+
+                                                                <div>
+                                                                    <div class="card-hover "  >
+                                                                    {%if request.user.image %}
+                                                                        <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;" src="{{request.user.image.url}}" alt="">
+                                                                        <span   style=" margin-left: 20px;cursor: pointer;color: black;">{{post.account.username }}      
+                                                                        <span   class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer none; "> {{post.description}}</span>
+                                                                        </span>
+                                                                    {%endif%}
+                                                                    </div>
+                                                                    <p style="color: #989899;margin-left: 60px;cursor: pointer;font-size: 12px;">1h  378 beğenme Yanıtla Çevirsine bax </p>
+                                                                </div>
+
+                                                                <div>
+                                                                    <div class="card-hover "  >
+                                                                    {%if request.user.image %}
+                                                                        <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;" src="{{request.user.image.url}}" alt="">
+                                                                        <span   style=" margin-left: 20px;cursor: pointer;color: black;">{{post.account.username }}      
+                                                                        <span   class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer none; "> {{post.description}}</span>
+                                                                        </span>
+                                                                    {%endif%}
+                                                                    </div>
+                                                                    <p style="color: #989899;margin-left: 60px;cursor: pointer;font-size: 12px;">1h  378 beğenme Yanıtla Çevirsine bax </p>
+                                                                </div>
+
+                                                                <div>
+                                                                    <div class="card-hover "  >
+                                                                    {%if request.user.image %}
+                                                                        <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;" src="{{request.user.image.url}}" alt="">
+                                                                        <span   style=" margin-left: 20px;cursor: pointer;color: black;">{{post.account.username }}      
+                                                                        <span   class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer none; "> {{post.description}}</span>
+                                                                        </span>
+                                                                    {%endif%}
+                                                                    </div>
+                                                                    <p style="color: #989899;margin-left: 60px;cursor: pointer;font-size: 12px;">1h  378 beğenme Yanıtla Çevirsine bax </p>
+                                                                </div>
+
                                                             </div>   
                                                             <div class="card-top" style="padding-bottom: 10px;">
                                                                 <div>
@@ -192,7 +266,7 @@
                                                                     <img style="width: 20px;margin-left: 5px;cursor: pointer;" src="{% static '/img/ribbon.png' %}" alt="">
                                                                 </div>  
                                                             </div>
-                                                            <p style="color: rgb(0, 0, 0);cursor: pointer;">18,874 likes</p>
+                                                            <p style="color: rgb(0, 0, 0);cursor: pointer;">{{post.likes}} likes</p>
                                                             <p style="font-weight: 200; color: darkgrey;margin-top: -10px;">1 yorumun tümünü gör
                                                             </p>
                                                             <input style="border: none;width: 100%;margin-top: -10px;outline: none;font-size: 15px;"  type="text" name="" id="" placeholder="Yorum ekle">

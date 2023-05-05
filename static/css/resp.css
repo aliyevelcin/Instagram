@@ -43,7 +43,13 @@
       width: 100% !important;
       height: 350px !important;
    }
-     
+   .telefon{
+      display: none;
+   }
+
+   .img-pad{
+      padding-left: 0px !important;
+   }
   }
 
 @media (min-width:767px) and (max-width:768px){
@@ -98,7 +104,9 @@
     
    /* profile html  */
 
-    
+   .telefon{
+      display: none;
+   }
 
 }
 
@@ -153,7 +161,9 @@
 
     
    /* profile html  */
-
+   .telefon{
+      display: none;
+   }
     
 
 }

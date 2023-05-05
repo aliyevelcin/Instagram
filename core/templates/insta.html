@@ -17,219 +17,329 @@
     <div class="container-fluid">
         <div class="row">
             <div  style="border-right: 1px rgb(185, 185, 185) solid;" class="col-md-2">
-                <div style="cursor: pointer;">
-                    <h4 class="insta" style=" color: black; padding: 15px; ">Instagram</h4>
-                </div>
-                <div class="icon-text">
-                    <img class="icons" src="{% static '/img/house.png' %}" alt="">
-                    <p class="p-1">Home</p>
-                </div>
-
-                <div class="icon-text">
-                    <img class="icons" src="{% static '/img/search.png' %}" alt="">
-                    <p class="p-1">Search</p>
-                </div>
-                 
-                <a  style="text-decoration: none;color: black;"  href="{% url 'core:explore' %}">
-                <div class="icon-text">
-                     
-                    <img class="icons" src="{% static '/img/explore.png' %}" alt="">
-                    <p class="p-1">Explore</p>
-                </div> 
+                <a href="#">
+                    <div style="cursor: pointer;">
+                        <h4 class="insta" style=" color: black; padding: 15px; ">Instagram</h4>
+                    </div>
                 </a>
 
-                <div class="icon-text" >
-                    <img class="icons" src="{% static '/img/reels.png' %}" alt="">
-                    <p class="p-1">Reels</p>
-                </div>
-                
-                <div class="icon-text">
-                    <img class="icons" src="{% static '/img/message.png' %}" alt="">
-                    <p class="p-1">Message</p>
-                </div>
-
-                <div class="icon-text">
-                    <img class="icons" src="{% static '/img/Notifications.png' %}" alt="">
-                    <p class="p-1">Notifications</p>
-                </div>
-
-                <div class="icon-text">
-                    <img class="icons" src="{% static '/img/create.png' %}" alt="">
-                    <p class="p-1">Create</p>
-                </div>
-                
-                <a  style="text-decoration: none;color: black;"  href="">
-                <div class="icon-text">
-                    <img class="icons" src="{% static '/img/profile.png' %}" alt="">
-                    <p class="p-1">Profile</p>
-                </div>
+                <a href="#">
+                    <div class="icon-text">
+                        <img class="icons" src="{% static '/img/house.png' %}" alt="">
+                        <p class="p-1">Home</p>
+                    </div>
                 </a>
-                <div class="icon-text">
-                    <img class="icons" src="{% static '/img/more.png' %}" alt="">
-                    <p class="p-1">More</p>
-                </div>
 
+                <a href="#">
+                    <div class="icon-text">
+                        <img class="icons" src="{% static '/img/search.png' %}" alt="">
+                        <p class="p-1">Search</p>
+                    </div>
+                </a>
+                
+                <a  style="color: black;"  href="{% url 'core:explore' %}">
+                    <div class="icon-text"> 
+                        <img class="icons" src="{% static '/img/explore.png' %}" alt="">
+                        <p class="p-1">Explore</p>
+                    </div> 
+                </a>
 
+                <a href="#">
+                    <div class="icon-text" >
+                        <img class="icons" src="{% static '/img/reels.png' %}" alt="">
+                        <p class="p-1">Reels</p>
+                    </div>
+                </a>
+                
+                <a href="#">
+                    <div class="icon-text">
+                        <img class="icons" src="{% static '/img/message.png' %}" alt="">
+                        <p class="p-1">Message</p>
+                    </div>
+                </a>
 
+                <a href="#">
+                    <div class="icon-text">
+                        <img class="icons" src="{% static '/img/Notifications.png' %}" alt="">
+                        <p class="p-1">Notifications</p>
+                    </div>
+                </a>
+
+                <a href="#">
+                    <div class="icon-text">
+                        <img class="icons" src="{% static '/img/create.png' %}" alt="">
+                        <p class="p-1">Create</p>
+                    </div>
+                </a>
+                
+                <a style=" color: black;" href="{% url 'accounts:profile_account' request.user.slug %}">
+                    <div class="icon-text">
+                        {%if request.user.image %}
+                            <img class="icons" style="border-radius: 20px;" src="{{request.user.image.url}}" alt="">
+                        {%else %}
+                            <img class="icons" src="{% static '/img/profile.png'%}" alt="">
+                        {%endif%} 
+                            <p class="p-1">Profile</p>
+                    </div>
+                </a>
+
+                <a href="#"> 
+                    <div style="padding-top: 30px;" class="icon-text">
+                        <img class="icons" src="{% static '/img/more.png' %}" alt="">
+                        <p class="p-1">More</p>
+                    </div>
+                </a>
             </div>
             <div class="col-md-6 md-6">
                 <div class="ove" style="width: 700px; overflow-y: hidden; overflow-x: scroll;">
                     <ul class="el" style="list-style-type: none;display: flex;padding-left: 20px;padding-right: 20px;padding-top: 35px;"   >
                         <li>
-                            <div   >
-                                <div    class="box">
-                                    <div   onclick="openSearchh()" class="img">
-                                        <img   src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
-                                    </div>
-                                    <div  class="text">
-                                        <p   class="len" >username</p> 
-                                    </div>
+                            <div>
+                                <div class="box">
+                                    {%if request.user.image %}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{{request.user.image.url}}" alt="" srcset="">
+                                        </div>
+                                        <div class="text">
+                                            <p class="len">{{ request.user.username }}</p> 
+                                        </div>
+                                    {%else%}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
+                                        </div>
+                                         
+                                    {%endif%}
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <a href="" style="text-decoration: none;color: black;">
-                                <div    class="box">
-                                    <div class="img">
-                                        <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
-                                    </div>
-                                    <div class="text">
-                                        <p   class="len" >username</p> 
-                                    </div>
+                            <div>
+                                <div class="box">
+                                    {%if request.user.image %}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{{request.user.image.url}}" alt="" srcset="">
+                                        </div>
+                                        <div class="text">
+                                            <p class="len">{{ request.user.username }}</p> 
+                                        </div>
+                                    {%else%}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
+                                        </div>
+                                         
+                                    {%endif%}
                                 </div>
-                            </a>
+                            </div>
                         </li>
                         <li>
-                            <a href="" style="text-decoration: none;color: black;">
-                                <div   class="box">
-                                    <div class="img">
-                                        <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
-                                    </div>
-                                    <div class="text">
-                                        <p   class="len" >username</p> 
-                                    </div>
+                            <div>
+                                <div class="box">
+                                    {%if request.user.image %}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{{request.user.image.url}}" alt="" srcset="">
+                                        </div>
+                                        <div class="text">
+                                            <p class="len">{{ request.user.username }}</p> 
+                                        </div>
+                                    {%else%}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
+                                        </div>
+                                         
+                                    {%endif%}
                                 </div>
-                            </a>
+                            </div>
                         </li>
                         <li>
-                            <a href="" style="text-decoration: none;color: black;">
-                                <div   class="box">
-                                    <div class="img">
-                                        <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
-                                    </div>
-                                    <div class="text">
-                                        <p   class="len" >username</p> 
-                                    </div>
+                            <div>
+                                <div class="box">
+                                    {%if request.user.image %}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{{request.user.image.url}}" alt="" srcset="">
+                                        </div>
+                                        <div class="text">
+                                            <p class="len">{{ request.user.username }}</p> 
+                                        </div>
+                                    {%else%}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
+                                        </div>
+                                         
+                                    {%endif%}
                                 </div>
-                            </a>
+                            </div>
+                        </li> 
+                        <li>
+                            <div>
+                                <div class="box">
+                                    {%if request.user.image %}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{{request.user.image.url}}" alt="" srcset="">
+                                        </div>
+                                        <div class="text">
+                                            <p class="len">{{ request.user.username }}</p> 
+                                        </div>
+                                    {%else%}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
+                                        </div>
+                                         
+                                    {%endif%}
+                                </div>
+                            </div>
+                        </li> 
+                        <li>
+                            <div>
+                                <div class="box">
+                                    {%if request.user.image %}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{{request.user.image.url}}" alt="" srcset="">
+                                        </div>
+                                        <div class="text">
+                                            <p class="len">{{ request.user.username }}</p> 
+                                        </div>
+                                    {%else%}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
+                                        </div>
+                                         
+                                    {%endif%}
+                                </div>
+                            </div>
                         </li> <li>
-                            <a href="" style="text-decoration: none;color: black;">
-                                <div   class="box">
-                                    <div class="img">
-                                        <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
-                                    </div>
-                                    <div class="text">
-                                        <p   class="len" >username</p> 
-                                    </div>
+                            <div>
+                                <div class="box">
+                                    {%if request.user.image %}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{{request.user.image.url}}" alt="" srcset="">
+                                        </div>
+                                        <div class="text">
+                                            <p class="len">{{ request.user.username }}</p> 
+                                        </div>
+                                    {%else%}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
+                                        </div>
+                                         
+                                    {%endif%}
                                 </div>
-                            </a>
-                        </li> <li>
-                            <a href="" style="text-decoration: none;color: black;">
-                                <div   class="box">
-                                    <div class="img">
-                                        <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
-                                    </div>
-                                    <div class="text">
-                                        <p   class="len" >username</p> 
-                                    </div>
-                                </div>
-                            </a>
-                        </li> <li>
-                            <a href="" style="text-decoration: none;color: black;">
-                                <div   class="box">
-                                    <div class="img">
-                                        <img src="{% static '/img/img-1.jp' %}g" alt="" srcset="">
-                                    </div>
-                                    <div class="text">
-                                        <p   class="len" >username</p> 
-                                    </div>
-                                </div>
-                            </a>
+                            </div>
                         </li>
                         <li>
-                            <a href="" style="text-decoration: none;color: black;">
-                                <div   class="box">
-                                    <div class="img">
-                                        <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
-                                    </div>
-                                    <div class="text">
-                                        <p   class="len" >username</p> 
-                                    </div>
+                            <div>
+                                <div class="box">
+                                    {%if request.user.image %}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{{request.user.image.url}}" alt="" srcset="">
+                                        </div>
+                                        <div class="text">
+                                            <p class="len">{{ request.user.username }}</p> 
+                                        </div>
+                                    {%else%}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
+                                        </div>
+                                         
+                                    {%endif%}
                                 </div>
-                            </a>
+                            </div>
                         </li>
                         <li >
-                            <a href="" style="text-decoration: none;color: black;">
-                                <div   class="box">
-                                    <div class="img">
-                                        <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
-                                    </div>
-                                    <div class="text">
-                                        <p   class="len" >username</p> 
-                                    </div>
+                            <div>
+                                <div class="box">
+                                    {%if request.user.image %}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{{request.user.image.url}}" alt="" srcset="">
+                                        </div>
+                                        <div class="text">
+                                            <p class="len">{{ request.user.username }}</p> 
+                                        </div>
+                                    {%else%}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
+                                        </div>
+                                         
+                                    {%endif%}
                                 </div>
-                            </a>
+                            </div>
                         </li>
                         <li class="sa-1" >
-                            <a href="" style="text-decoration: none;color: black;">
-                                <div   class="box ">
-                                    <div class="img">
-                                        <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
-                                    </div>
-                                    <div class="text">
-                                        <p   class="len  " >username</p> 
-                                    </div>
+                            <div>
+                                <div class="box">
+                                    {%if request.user.image %}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{{request.user.image.url}}" alt="" srcset="">
+                                        </div>
+                                        <div class="text">
+                                            <p class="len">{{ request.user.username }}</p> 
+                                        </div>
+                                    {%else%}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
+                                        </div>
+                                         
+                                    {%endif%}
                                 </div>
-                            </a>
+                            </div>
                         </li>
                         <li  class="sa-1" >
-                            <a href="" style="text-decoration: none;color: black;">
-                                <div   class="box">
-                                    <div class="img">
-                                        <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
-                                    </div>
-                                    <div class="text">
-                                        <p   class="len  " >username</p> 
-                                    </div>
+                            <div>
+                                <div class="box">
+                                    {%if request.user.image %}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{{request.user.image.url}}" alt="" srcset="">
+                                        </div>
+                                        <div class="text">
+                                            <p class="len">{{ request.user.username }}</p> 
+                                        </div>
+                                    {%else%}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
+                                        </div>
+                                         
+                                    {%endif%}
                                 </div>
-                            </a>
+                            </div>
                         </li>
                         <li  class="sa-1" >
-                            <a href="" style="text-decoration: none;color: black;">
-                                <div   class="box">
-                                    <div class="img">
-                                        <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
-                                    </div>
-                                    <div class="text">
-                                        <p   class="len  " >username</p> 
-                                    </div>
+                            <div>
+                                <div class="box">
+                                    {%if request.user.image %}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{{request.user.image.url}}" alt="" srcset="">
+                                        </div>
+                                        <div class="text">
+                                            <p class="len">{{ request.user.username }}</p> 
+                                        </div>
+                                    {%else%}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
+                                        </div>
+                                         
+                                    {%endif%}
                                 </div>
-                            </a>
+                            </div>
                         </li>
-                        <l  i>
-                            <a href="" style="text-decoration: none;color: black;">
-                                <div    class="box">
-                                    <div class="img">
-                                        <img src="{% static '/img/img-1.jpg' %} " alt="" srcset="">
-                                    </div>
-                                    <div class="text">
-                                        <p  class="len  " >username</p> 
-                                    </div>
+                        <li>
+                            <div>
+                                <div class="box">
+                                    {%if request.user.image %}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{{request.user.image.url}}" alt="" srcset="">
+                                        </div>
+                                        <div class="text">
+                                            <p class="len">{{ request.user.username }}</p> 
+                                        </div>
+                                    {%else%}
+                                        <div onclick="openSearchh()" class="img">
+                                            <img src="{% static '/img/img-1.jpg' %}" alt="" srcset="">
+                                        </div>
+                                         
+                                    {%endif%}
                                 </div>
-                            </a>
+                            </div>
                         </li>
                     </ul>
-
                 </div>
     
                  <section>
@@ -239,25 +349,28 @@
                             <div class="card-item" style="background-color: #ffffff;padding-top: 30px;">
                                 <div class="card-header">
                                  <div class="card-hover">
-                                     <img style="cursor: pointer;" src="{% static '/img/img-2.jpeg' %}" alt="">
                                      <a href="{% url 'accounts:profile_account' post.account.slug%}">
-                                      <span  style="color: black;margin-left: 10px;cursor: pointer;font-size: 20px;">{{post.account.username}}</span>  
-
-                                     </a>
+                                    {%if request.user.image %}
+                                        <img style="cursor: pointer;width: 45px;height: 45px;" src="{{request.user.image.url}}" alt="">
+                                    {%else%}
+                                        <img style="cursor: pointer;" src="{% static '/img/profile.png'%}" alt="">
+                                    {%endif%}
+                                        <span  style="color: black;margin-left: 10px;cursor: pointer;font-size: 20px;">{{post.account.username}}</span>  
+                                        </a>
                                     <div style="border-radius: 50px;">
-                                    <div class="form-popup" id="myForm" style="padding-left: 170px;border-radius: 50px;padding-top: 10px; ">
-                                        <form style="border-radius: 50px;" action="#" class="form-container">
-                                            <button type="submit" style="color:#ff0015;" class="btn">Şikayet Et</button>
-                                            <button type="submit" style="color:#ff0015;" class="btn">Takibi Bırak</button>
-                                            <button type="submit" class="btn">Favorilere ekle</button>
-                                            <button type="submit" class="btn">Paylaş..</button>
-                                            <button type="submit" class="btn">Bağlantıyı Kopyala</button>
-                                            <button type="submit" class="btn">Sitene dön</button>
-                                            <button type="submit" class="btn">Bu hesap hakkında </button>
-                                            <button type="submit" class="btn">Sitene dön</button>
-                                            <button type="button" class="btn cancel" onclick="closeForm()">İptal</button>
-                                        </form>
-                                    </div> 
+                                        <div class="form-popup" id="myForm" style="padding-left: 170px;border-radius: 50px;padding-top: 10px; ">
+                                            <form style="border-radius: 50px;" action="#" class="form-container">
+                                                <button type="submit" style="color:#ff0015;" class="btn">Şikayet Et</button>
+                                                <button type="submit" style="color:#ff0015;" class="btn">Takibi Bırak</button>
+                                                <button type="submit" class="btn">Favorilere ekle</button>
+                                                <button type="submit" class="btn">Paylaş..</button>
+                                                <button type="submit" class="btn">Bağlantıyı Kopyala</button>
+                                                <button type="submit" class="btn">Sitene dön</button>
+                                                <button type="submit" class="btn">Bu hesap hakkında </button>
+                                                <button type="submit" class="btn">Sitene dön</button>
+                                                <button type="button" class="btn cancel" onclick="closeForm()">İptal</button>
+                                            </form>
+                                        </div> 
                                     </div>
                                  </div>
                                      <img class="open1"  class="openBtn" onclick="openForm()"style="width: 25px;cursor: pointer;color: white;" src="{% static '/img/salam.png' %}" alt="">
@@ -276,7 +389,7 @@
                                         <img style="width: 20px;margin-left: 5px;cursor: pointer;" src="{% static '/img/ribbon.png' %}" alt="">
                                     </div>  
                                   </div>
-                                  <p   style="color: rgb(0, 0, 0);cursor: pointer;">{{post.likes}}likes</p>
+                                  <p   style="color: rgb(0, 0, 0);cursor: pointer;">{{post.likes}} likes</p>
                                   <div style="display: flex;">
                                   <h4 style="display: flex; gap: 4px; color: black;font-size: 16px;cursor: pointer;margin-top: -10px;" > {{post.account.username}}</h4>
                                     <p     class="len-2" style=" margin-top: -10px; color: rgb(0, 0, 0);margin-left: 8px;font-size: 14px;">{{post.description}}</p> 
@@ -296,33 +409,19 @@
 
 
             <div class="col-md-4 basqa" style="padding-left: 50px;">
-                <div    class="main-profile" >
-                    <img  class="profile_img" src="{% static '/img/profile.png' %}" alt="">
-                    <a class="a-tag" href="">baglan.0_</a>
-                    <a href=""><button style="font-size: 13px; font-family: sans-serif; margin-left: 100px; background-color: white; border: none; color: #1877F2;">Switch</button></a>
+                <div class="main-profile">
+                    {%if request.user.image %}
+                        <img  class="profile_img" src="{{request.user.image.url}}" alt="">
+                        <a class="a-tag" href="">{{ request.user.username }}</a>
+                        <a href=""><button style="font-size: 13px; font-family: sans-serif; margin-left: 100px; background-color: white; border: none; color: #1877F2;">Switch</button></a>
+                    {%else%}
+                        <img  class="profile_img" src="{% static '/img/profile.png' %}" alt="">
+                    {%endif%}
                 </div>
 
                 <div style="display: flex; justify-content: center; margin-right: 47px;">
                     <p style="font-size: 15px; font-family: sans-serif;color: rgba(0, 0, 0, 0.6);">Suggestions for you</p>
-                    <a href=""><button style="font-size: 13px; font-family: sans-serif; margin-left: 100px; background-color: white; border: none; color: black">See All</button></a>
-                </div>
-
-                <div class="div-profile" >
-                    <img class="person_img" src="{% static '/img/profile.png' %}" alt="">
-                    <div style="margin-top: 8px;">
-                        <a class="a-tag" href="">baglan.0_</a>
-                        <p style="font-size: 13px; color:rgba(0, 0, 0, 0.6);">Follow by aliyevvletif</p>
-                    </div>
-                    <a href=""><button style="font-size: 13px; font-family: sans-serif; margin-left: 80px; background-color: white; border: none; color: #1877F2;">Follow</button></a>
-                </div>
-
-                <div class="div-profile" >
-                    <img class="person_img" src="{% static '/img/profile.png' %}" alt="">
-                    <div style="margin-top: 8px;">
-                        <a class="a-tag" href="">baglan.0_</a>
-                        <p style="font-size: 13px; color:rgba(0, 0, 0, 0.6);">Follow by aliyevvletif</p>
-                    </div>
-                    <a href=""><button style="font-size: 13px; font-family: sans-serif; margin-left: 80px; background-color: white; border: none; color: #1877F2;">Follow</button></a>
+                    <a href="#"><button style="font-size: 13px; font-family: sans-serif; margin-left: 100px; background-color: white; border: none; color: black">See All</button></a>
                 </div>
 
                 <div class="div-profile" >
@@ -340,7 +439,7 @@
                         <a class="a-tag" href="">baglan.0_</a>
                         <p style="font-size: 13px; color:rgba(0, 0, 0, 0.6);">Follow by aliyevvletif</p>
                     </div>
-                    <a href=""><button style="font-size: 13px; font-family: sans-serif; margin-left: 80px; background-color: white; border: none; color: #1877F2;">Follow</button></a>
+                    <a href="#"><button style="font-size: 13px; font-family: sans-serif; margin-left: 80px; background-color: white; border: none; color: #1877F2;">Follow</button></a>
                 </div>
 
                 <div class="div-profile" >
@@ -349,7 +448,25 @@
                         <a class="a-tag" href="">baglan.0_</a>
                         <p style="font-size: 13px; color:rgba(0, 0, 0, 0.6);">Follow by aliyevvletif</p>
                     </div>
-                    <a href=""><button style="font-size: 13px; font-family: sans-serif; margin-left: 80px; background-color: white; border: none; color: #1877F2;">Follow</button></a>
+                    <a href="#"><button style="font-size: 13px; font-family: sans-serif; margin-left: 80px; background-color: white; border: none; color: #1877F2;">Follow</button></a>
+                </div>
+
+                <div class="div-profile" >
+                    <img class="person_img" src="{% static '/img/profile.png' %}" alt="">
+                    <div style="margin-top: 8px;">
+                        <a class="a-tag" href="">baglan.0_</a>
+                        <p style="font-size: 13px; color:rgba(0, 0, 0, 0.6);">Follow by aliyevvletif</p>
+                    </div>
+                    <a href="#"><button style="font-size: 13px; font-family: sans-serif; margin-left: 80px; background-color: white; border: none; color: #1877F2;">Follow</button></a>
+                </div>
+
+                <div class="div-profile" >
+                    <img class="person_img" src="{% static '/img/profile.png' %}" alt="">
+                    <div style="margin-top: 8px;">
+                        <a class="a-tag" href="">baglan.0_</a>
+                        <p style="font-size: 13px; color:rgba(0, 0, 0, 0.6);">Follow by aliyevvletif</p>
+                    </div>
+                    <a href="#"><button style="font-size: 13px; font-family: sans-serif; margin-left: 80px; background-color: white; border: none; color: #1877F2;">Follow</button></a>
                 </div>
             </div>
              </div>
