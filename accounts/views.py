@@ -32,4 +32,16 @@ def login(request):
         return redirect('/')
     return render(request, 'login.html')
  
+
+
+
+def update(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+         
+        user = authenticate(request, username=username )
+        dj_update(request,user)
+        return redirect('/')
+    return render(request, 'update.html')
+ 
 # Create your views here.
