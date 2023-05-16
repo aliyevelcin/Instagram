@@ -32,16 +32,24 @@
         <form action="" method="post">
             {% csrf_token %}
         <div style="padding-top: 10px;">
-            <input class="login-input" type="text" name="username" id=" " placeholder="Kullanıcı adı "> 
+            {{form.username}}
+            {{form.username.errors}}
         </div>
         <div style="padding-top: 10px;">
-            <input class="login-input" type="text" name="firstname" id=" " placeholder="Adı Soyadı"> 
+            {{form.first_name}}
+            {{form.first_name.errors}}
         </div>
         <div style="padding-top: 10px;"> 
-            <input class="login-input" type="text" name="lastname" id=" " placeholder="Cep Telefonu Numarası veya E-posta"> 
+            {{form.last_name}}
+            {{form.last_name.errors}}
         </div>
         <div style="padding-top: 10px;">
-            <input  class="login-input" type="password" name="password" id=" " placeholder="Şifre"> 
+            {{form.password1}}
+            {{form.password1.errors}}
+        </div>
+        <div style="padding-top: 10px;">
+            {{form.password2}}
+            {{form.password2.errors}}
         </div>
         <div style="padding-top: 20px;">
             <p style="font-size: 11px;padding-left: 45px;width: 320px;">Hizmetimizi kullanan kişiler senin iletişim bilgilerini Instagram'a yüklemiş olabilir.  <a  style="text-decoration: none;" href="#">Daha Fazla Bilgi Al</a></p>

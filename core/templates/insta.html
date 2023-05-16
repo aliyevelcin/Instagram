@@ -95,7 +95,6 @@
                     <ul class="el" style="list-style-type: none;display: flex;padding-left: 20px;padding-right: 20px;padding-top: 35px;"   >
                         {% for user in users %}
                         {%if user != request.user%}
-
                         <li>
                             <div>
                                 <div class="box">
@@ -112,23 +111,19 @@
                                         </div>
                                         <div class="text">
                                             <p class="len">{{ user.username }}</p> 
-                                        </div>
-                                         
+                                        </div>   
                                     {%endif%}
                                 </div>
                             </div>
                         </li>
                         {%endif%}
                         {% endfor %}
-                        
                     </ul>
                 </div>
-    
                  <section>
                     <main class="content" >
                         <div class="res-1 " style="padding-bottom: 50px;padding-left: 90px;padding-right: 90px;">
                             {% for post in posts %}
-                            
                             <div class="card-item" style="background-color: #ffffff;padding-top: 30px;">
                                 <div class="card-header">
                                  <div class="card-hover">
@@ -200,7 +195,9 @@
                         <a class="a-tag" href="{% url 'accounts:profile_account' request.user.slug %}   ">{{ request.user.username }}</a>
                         <a href=""><button style="font-size: 13px; font-family: sans-serif; margin-left: 100px; background-color: white; border: none; color: #1877F2;">Switch</button></a>
                     {%else%}
-                        <img  class="profile_img" src="{% static '/img/profile.png' %}" alt="">
+                    
+                    <img  class="profile_img" src="{% static '/img/profile.png' %}" alt="">
+                    <a class="a-tag" href="{% url 'accounts:profile_account' request.user.slug %}   ">{{ request.user.username }}</a>
                     {%endif%}
                 </div>
 

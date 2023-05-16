@@ -121,7 +121,8 @@
                             </div>
                         </div>  
                     </div>
-                    <div  style="border-bottom: 1px rgb(185, 185, 185) solid; padding-top: 35px; width: 100%;"></div>    
+                    <div style="border-bottom: 1px rgb(185, 185, 185) solid; padding-top: 35px; width: 100%;">
+                    </div>    
                 </div>
                 <div class="main container-fluid">
                     <a class="post-tag" href="#"><img class="posts-img" src="{% static '/img/feed.png'%}" alt="">POSTS</a>
@@ -129,12 +130,7 @@
                     <a class="post-tag" href="#"><img class="posts-img" src="{% static '/img/tag.png'%}" alt="">TAGGED</a>
                 </div>
 
-                
-
-                
-                
-                
-                <div  class="col-md-10 trend post"  >
+                <div class="col-md-10 trend post"  >
                     <div class="container-fluid">
                         <div class="row" style="padding-top: 30px; ">
                             {%if user.posts.all %}
@@ -148,14 +144,14 @@
                                                 <div style="display: flex;height: 550px;" > 
                                                     <div style="height: 550px;width: 500px;background-size: contain;background-image: url({{post.image.url}});background-repeat: no-repeat;background-position: center;">
                                                     </div> 
-                                                   <div class="full" style="border: 1px solid rgba(0,0,0,.125);padding-top: 15px;">
+                                                    <div class="full" style="border: 1px solid rgba(0,0,0,.125);padding-top: 15px;">
                                                         <div class="card-header"  >
                                                             <div class="card-hover" style="padding-top: 15px;">
-                                                            <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;margin-left: 12px; " src="{{user.image.url}}" alt="">
-                                                            <a href="{% url 'accounts:profile_account' post.account.slug %}">
-                                                            <span  style="color: black;margin-left: 10px;cursor: pointer;">{{user.username}}</span>
-                                                            </a>
-                                                        </div>
+                                                                <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;margin-left: 12px; " src="{{user.image.url}}" alt="">
+                                                                <a href="{% url 'accounts:profile_account' post.account.slug %}">
+                                                                <span  style="color: black;margin-left: 10px;cursor: pointer;">{{user.username}}</span>
+                                                                </a>
+                                                            </div>
                                                             <img class="open1"   style="width: 25px;cursor: pointer;color: white;" src="{% static '/img/salam.png' %}" alt="">
                                                         </div>
 
@@ -164,21 +160,16 @@
                                                                 <div>
                                                                     <div class="card-hover "  >
                                                                     {%if request.user.image %}
-                                                                             <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;" src="{{post.account.image.url}}" alt="">
-                                                                            <a href="{% url 'accounts:profile_account' post.account.slug %}">
-                                                                                 <span   style=" margin-left: 20px;cursor: pointer;color: black;">{{post.account.username }}      
-                                                                            </a>
-                                                                        <span   class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer none; "> {{post.description}}</span>
+                                                                        <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;" src="{{post.account.image.url}}" alt="">
+                                                                        <a href="{% url 'accounts:profile_account' post.account.slug %}">
+                                                                        <span style=" margin-left: 20px;cursor: pointer;color: black;">{{post.account.username }}      
+                                                                        </a>
+                                                                        <span class="text-dark"  style="color: black;margin-left: 10px;cursor: pointer none; "> {{post.description}}</span>
                                                                         </span>
                                                                     {%endif%}
                                                                     </div>
                                                                     <p style="color: #989899;margin-left: 60px;cursor: pointer;font-size: 12px;">1h  378 beğenme Yanıtla Çevirsine bax </p>
                                                                 </div>
-    
-                                                                
-
-
-
                                                             </div>   
                                                             <div class="card-top" style="padding-bottom: 10px;">
                                                                 <div>
@@ -191,8 +182,7 @@
                                                                 </div>  
                                                             </div>
                                                             <p style="color: rgb(0, 0, 0);cursor: pointer;">{{post.likes}} likes</p>
-                                                            <p style="font-weight: 200; color: darkgrey;margin-top: -10px;">1 yorumun tümünü gör
-                                                            </p>
+                                                            <p style="font-weight: 200; color: darkgrey;margin-top: -10px;">1 yorumun tümünü gör</p>
                                                             <input style="border: none;width: 100%;margin-top: -10px;outline: none;font-size: 15px;"  type="text" name="" id="" placeholder="Yorum ekle">
                                                         </div>
                                                     </div>
@@ -203,7 +193,6 @@
                                 </div>
                             </div> 
     
-
                             <script>
                                 function openSearch{{post.id}}() {
                                   document.getElementById("myOverlay{{post.id}}").style.display = "block";
@@ -227,16 +216,16 @@
                             </div>
                             {% endfor %}
                             {% else %}
-                            <div class="share"  style=" margin-top: 65px;text-align: center;">
-                                <div>
-                                    <img style="width: 60px; cursor: pointer;" class="camera" src="{% static '/img/camera.png'%}" alt="">
-                                    <h3 style="font-family: fantasy sans-serif;">Share Photos</h3>
-                                    <p style="font-family: sans-serif;">When you share photos, they will appear on your profile.</p>
-                                    <a href="">Share your first photo</a>
-                                </div>
-                              </div>
-                            {% endif %}
                         </div>
+                        <div style="justify-content: center;">
+                            <div class="share" style=" margin-top: 65px;text-align: center;">
+                                <img style="width: 60px; cursor: pointer;text-align: center;" class="camera" src="{% static '/img/camera.png'%}" alt="">
+                                <h3 style="font-family: fantasy sans-serif;">Share Photos</h3>
+                                <p style="font-family: sans-serif;">When you share photos, they will appear on your profile.</p>
+                                <a href="">Share your first photo</a>
+                            </div>
+                        </div>
+                            {% endif %}
                     </div>
                 </div>
             </div>
@@ -252,8 +241,6 @@
       document.getElementById("myOverlay").style.display = "none";
     }
 </script>        
-
-
 
 <!-- fullscrenn -->
 <script>
@@ -272,6 +259,5 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
 </body>
 </html>
