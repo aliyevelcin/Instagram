@@ -115,6 +115,7 @@ USE_I18N = True
 USE_TZ = True
 
 LOGIN_REDIRECT_URL = reverse_lazy('core:main')
+LOGOUT_REDIRECT_URL = reverse_lazy('accounts:login')
 
 AUTH_USER_MODEL = 'accounts.User'
 
@@ -127,6 +128,11 @@ STATICFILES_DIRS = [STATIC_DIR]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

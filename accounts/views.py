@@ -4,9 +4,10 @@ from django.contrib.auth import authenticate, login as dj_login
 from django.contrib.auth.hashers import make_password
 from django.views.generic import DetailView, CreateView
 from accounts.forms import RegisterForm, LoginForm
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, PasswordChangeView
 from django.urls import reverse_lazy
-# ,UpdateForm
+from accounts.forms import ThePasswordChangeForm
+
 class ProfileView(DetailView):
     model = User
     template_name = "profile.html"
@@ -17,8 +18,6 @@ class RegisterView(CreateView):
     template_name = "register.html"
     form_class = RegisterForm
     success_url = reverse_lazy('accounts:login')
-
-
 
 
  
@@ -36,7 +35,7 @@ def update(request):
         return redirect('/')
     return render(request, 'update.html')
  
-# class UpdateUSerView(CreateView):
-#     template_name = "update.html"
-#     form_class = UpdateForm
-# Create your views here.
+class UpdatePasswordView(PasswordChangeView):
+    template_name = 'update.html'
+    form_class = ThePasswordChangeForm
+    success_url = reverse_lazy('accounts:login')

@@ -1,7 +1,31 @@
 from django import forms 
 from accounts.models import User 
 from django.contrib.auth.forms import UserCreationForm,UsernameField,AuthenticationForm
-# ,EmailResetForm
+from django.contrib.auth.forms import PasswordChangeForm
+
+
+class ThePasswordChangeForm(PasswordChangeForm):
+    old_password = forms.CharField(
+        widget = forms.PasswordInput(
+            attrs={
+                'placeholder' : 'Cari şifrənizi daxil edin',
+                'class' : 'text',
+            }))
+
+    new_password1 = forms.CharField(
+        widget = forms.PasswordInput(
+            attrs={
+                'placeholder' : 'Yeni şifrənizi daxil edin',
+                'class' : 'text',
+            }))
+
+    new_password2 = forms.CharField(
+        widget = forms.PasswordInput(
+            attrs={
+                'placeholder' : 'Yeni şifrənizi yenidən daxil edin',
+                'class' : 'text',
+            }))
+
 class RegisterForm(UserCreationForm):
 
     
