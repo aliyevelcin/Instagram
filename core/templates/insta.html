@@ -133,7 +133,7 @@
                         {%else%}
                         <img  class="profile_img" src="{% static '/img/profile.png' %}" alt="">
                         <div>
-                            <a class="a-tag" href="{% url 'accounts:profile_account' request.user.slug %}   ">{{post.account.username}}</a>
+                            <a class="a-tag" href="{% url 'accounts:profile_account' post.account.slug %}   ">{{post.account.username}}</a>
                             <p style="font-size: 13px; color:rgba(0, 0, 0, 0.6);">Follow by aliyevvf</p>
                         </div>
                         {%endif%}
