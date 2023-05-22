@@ -107,8 +107,9 @@
                         <a class="a-tag" href="{% url 'accounts:profile_account' request.user.slug %}   ">{{ request.user.username }}</a>
                         <a href="{% url 'accounts:log-out' %}"><button style="font-size: 13px; font-family: sans-serif; margin-left: 100px; background-color: white; border: none; color: #1877F2;outline: none;">Logout</button></a>
                     {%else%}
-                        <img class="profile_img" src="{% static '/img/profile.png' %}" alt="">
-                        <a class="a-tag" href="{% url 'accounts:profile_account' request.user.slug %}   ">Login</a>
+                        <img class="profile_img" src="{% static '/img/profile.png' %}" alt="">  
+                        <a class="a-tag" href="{% url 'accounts:profile_account' request.user.slug %}   ">{{ request.user.username }}</a>
+                        <a href="{% url 'accounts:log-out' %}"><button style="font-size: 13px; font-family: sans-serif; margin-left: 100px; background-color: white; border: none; color: #1877F2;outline: none;">Logout</button></a>
                     {%endif%}
                 </div>
                 {%else%}
@@ -133,10 +134,10 @@
                         {%else%}
                         <img  class="profile_img" src="{% static '/img/profile.png' %}" alt="">
                         <div>
-                            <a class="a-tag" href="{% url 'accounts:profile_account' post.account.slug %}   ">{{post.account.username}}</a>
+                            <a class="a-tag" href="{% url 'accounts:profile_account' request.user.slug %}   ">{{post.account.username}}</a>
                             <p style="font-size: 13px; color:rgba(0, 0, 0, 0.6);">Follow by aliyevvf</p>
                         </div>
-                        {%endif%}
+                    {%endif%}
                     <a href="#"><button style="font-size: 13px; font-family: sans-serif; margin-left: 80px; background-color: white; border: none; color: #1877F2;">Follow</button></a>
                 </div>
                 {% endfor %}

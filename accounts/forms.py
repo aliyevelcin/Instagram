@@ -40,13 +40,18 @@ class RegisterForm(UserCreationForm):
                 'class' : 'login-input',
             }))
 
+    email = forms.EmailField(
+            widget = forms.EmailInput(attrs={
+                'placeholder': 'Email Address',
+                'class': 'login-input',
+            })
+        )
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name','password1','password2')
+        fields = ('username', 'first_name', 'email','password1','password2')
         widgets = {
             'username': forms.TextInput(attrs={'id': 'username', 'placeholder': 'Kullanıcı adı', 'class': 'login-input'}),
             'first_name': forms.TextInput(attrs={'id': 'full_name', 'placeholder': 'Adı Soyadı', 'class': 'login-input'}),
-            'last_name': forms.TextInput(attrs={'id': 'last_name', 'placeholder': 'Cep Telefonu Numarası veya E-posta', 'class': 'login-input'}),
         }
 
 class LoginForm(AuthenticationForm):
@@ -77,7 +82,7 @@ class ResetPasswordForm(PasswordResetForm):
     email = forms.EmailField(
         widget = forms.EmailInput(attrs={
             'placeholder': 'Email Address',
-            'class': 'form-control',
+            'class': 'login-input',
         })
     )
 
