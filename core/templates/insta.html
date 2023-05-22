@@ -35,64 +35,63 @@
                         {% endfor %}
                     </ul>
                 </div>
-                 <section>
+                <section>
                     <main class="content" >
                         <div class="res-1 " style="padding-bottom: 50px;padding-left: 90px;padding-right: 90px;">
                             {% for post in posts %}
                             <div class="card-item" style="background-color: #ffffff;padding-top: 30px;">
                                 <div class="card-header">
-                                 <div class="card-hover">
-                                     <a href="{% url 'accounts:profile_account' post.account.slug %}">
-                                    {%if post.account.image %}
-                                        <img style="cursor: pointer;width: 45px;height: 45px;" src="{{post.account.image.url}}" alt="">
+                                    <div class="card-hover">
+                                        <a href="{% url 'accounts:profile_account' post.account.slug %}">
+                                        {%if post.account.image %}
+                                            <img style="cursor: pointer;width: 45px;height: 45px;" src="{{post.account.image.url}}" alt="">
                                         {%else%}
-                                            <img style="cursor: pointer;" src="{% static '/img/profile.png' %}" alt="">
-                                    {% endif %}
-                                        <span  style="color: black;margin-left: 10px;cursor: pointer;font-size: 20px;">{{post.account.username}}</span>  
+                                                <img style="cursor: pointer;" src="{% static '/img/profile.png' %}" alt="">
+                                        {% endif %}
+                                            <span  style="color: black;margin-left: 10px;cursor: pointer;font-size: 20px;">{{post.account.username}}</span>  
                                         </a>
-                                    <div style="border-radius: 50px;">
-                                        <div class="form-popup" id="myForm" style="padding-left: 170px;border-radius: 50px;padding-top: 10px; ">
-                                            <form style="border-radius: 50px;" action="#" class="form-container">
-                                                <button type="submit" style="color:#ff0015;" class="btn">Şikayet Et</button>
-                                                <button type="submit" style="color:#ff0015;" class="btn">Takibi Bırak</button>
-                                                <button type="submit" class="btn">Favorilere ekle</button>
-                                                <button type="submit" class="btn">Paylaş..</button>
-                                                <button type="submit" class="btn">Bağlantıyı Kopyala</button>
-                                                <button type="submit" class="btn">Sitene dön</button>
-                                                <button type="submit" class="btn">Bu hesap hakkında </button>
-                                                <button type="submit" class="btn">Sitene dön</button>
-                                                <button type="button" class="btn cancel" onclick="closeForm()">İptal</button>
-                                            </form>
-                                        </div> 
+                                        <div style="border-radius: 50px;">
+                                            <div class="form-popup" id="myForm" style="padding-left: 170px;border-radius: 50px;padding-top: 10px; ">
+                                                <form style="border-radius: 50px;" action="#" class="form-container">
+                                                    <button type="submit" style="color:#ff0015;" class="btn">Şikayet Et</button>
+                                                    <button type="submit" style="color:#ff0015;" class="btn">Takibi Bırak</button>
+                                                    <button type="submit" class="btn">Favorilere ekle</button>
+                                                    <button type="submit" class="btn">Paylaş..</button>
+                                                    <button type="submit" class="btn">Bağlantıyı Kopyala</button>
+                                                    <button type="submit" class="btn">Sitene dön</button>
+                                                    <button type="submit" class="btn">Bu hesap hakkında </button>
+                                                    <button type="submit" class="btn">Sitene dön</button>
+                                                    <button type="button" class="btn cancel" onclick="closeForm()">İptal</button>
+                                                </form>
+                                            </div> 
+                                        </div>
                                     </div>
-                                 </div>
-                                     <img class="open1"  class="openBtn" onclick="openForm()"style="width: 25px;cursor: pointer;color: white;" src="{% static '/img/salam.png' %}" alt="">
+                                        <img class="open1"  class="openBtn" onclick="openForm()"style="width: 25px;cursor: pointer;color: white;" src="{% static '/img/salam.png' %}" alt="">
                                 </div>
                                 <div class="card-center card"   >
                                     <img src="{{post.image.url}}" alt="" srcset="">
-                                <div style="padding: 10px;">
-                                  <div class="card-top" style="padding-bottom: 10px;">
-                                     
-                                    <div>
-                                        <img style="width: 20px;cursor: pointer;" src="{% static '/img/heart.png' %}" alt="">
-                                        <img style="width: 20px;margin-left: 10px;cursor: pointer;" src="{% static '/img/chat.png' %}" alt="">
-                                        <img style="width: 20px;margin-left: 10px;cursor: pointer;" src="{% static '/img/send.png' %}" alt="">
-                                    </div>    
-                                    <div>
-                                        <img style="width: 20px;margin-left: 5px;cursor: pointer;" src="{% static '/img/ribbon.png' %}" alt="">
-                                    </div>  
-                                  </div>
-                                  <p   style="color: rgb(0, 0, 0);cursor: pointer;">{{post.likes}} likes</p>
-                                  <div style="display: flex;">
-                                  <a href="{% url 'accounts:profile_account' post.account.slug %}">
-                                    <h4 style="display: flex; gap: 4px; color: black;font-size: 16px;cursor: pointer;margin-top: -10px;" > {{post.account.username}}</h4>
-                                   </a> 
-                                    <p     class="len-2" style=" margin-top: -10px; color: rgb(0, 0, 0);margin-left: 8px;font-size: 14px;">{{post.description}}</p> 
-                                </div>
-                                    <p style="font-weight: 200; color: darkgrey;margin-top: -10px;">1 yorumun tümünü gör
-                                  </p>
-                                  <input style="border: none;width: 100%;margin-top: -10px;outline: none;font-size: 13px;"  type="text" name="" id="" placeholder="Yorum ekle">
-                                </div>
+                                    <div style="padding: 10px;">
+                                        <div class="card-top" style="padding-bottom: 10px;">
+                                            <div>
+                                                <img style="width: 20px;cursor: pointer;" src="{% static '/img/heart.png' %}" alt="">
+                                                <img style="width: 20px;margin-left: 10px;cursor: pointer;" src="{% static '/img/chat.png' %}" alt="">
+                                                <img style="width: 20px;margin-left: 10px;cursor: pointer;" src="{% static '/img/send.png' %}" alt="">
+                                            </div>    
+                                            <div>
+                                                <img style="width: 20px;margin-left: 5px;cursor: pointer;" src="{% static '/img/ribbon.png' %}" alt="">
+                                            </div>  
+                                        </div>
+                                        <p  style="color: rgb(0, 0, 0);cursor: pointer;">{{post.likes}} likes</p>
+                                        <div style="display: flex;">
+                                            <a href="{% url 'accounts:profile_account' post.account.slug %}">
+                                                <h4 style="display: flex; gap: 4px; color: black;font-size: 16px;cursor: pointer;margin-top: -10px;" > {{post.account.username}}</h4>
+                                            </a> 
+                                            <p class="len-2" style=" margin-top: -10px; color: rgb(0, 0, 0);margin-left: 8px;font-size: 14px;">{{post.description}}</p> 
+                                        </div>
+                                        <p style="font-weight: 200; color: darkgrey;margin-top: -10px;">1 yorumun tümünü gör
+                                        </p>
+                                        <input style="border: none;width: 100%;margin-top: -10px;outline: none;font-size: 13px;"  type="text" name="" id="" placeholder="Yorum ekle">
+                                    </div>
                                 </div>
                             </div>
                             {% endfor %}
@@ -100,9 +99,6 @@
                     </main>
                 </section>  
             </div>
-              
-
-
             <div class="col-md-4 basqa" style="padding-left: 50px;">
                 {% if request.user.is_authenticated %}
                 <div class="main-profile">
@@ -111,36 +107,27 @@
                         <a class="a-tag" href="{% url 'accounts:profile_account' request.user.slug %}   ">{{ request.user.username }}</a>
                         <a href="{% url 'accounts:log-out' %}"><button style="font-size: 13px; font-family: sans-serif; margin-left: 100px; background-color: white; border: none; color: #1877F2;outline: none;">Logout</button></a>
                     {%else%}
-                    
-                    <img  class="profile_img" src="{% static '/img/profile.png' %}" alt="">
-                    <a class="a-tag" href="{% url 'accounts:profile_account' request.user.slug %}   ">Login</a>
+                        <img class="profile_img" src="{% static '/img/profile.png' %}" alt="">
+                        <a class="a-tag" href="{% url 'accounts:profile_account' request.user.slug %}   ">Login</a>
                     {%endif%}
                 </div>
                 {%else%}
                 <div class="main-profile">
-                     
-                        <img  class="profile_img" src="{% static '/img/profile.png' %}" alt="">
-                        <a class="a-tag" href=" #  ">Username</a>
-                        <a href="{% url 'accounts:log-out' %}"><button style="font-size: 13px; font-family: sans-serif; margin-left: 100px; background-color: white; border: none; color: #1877F2;outline: none;">LOGIN</button></a>
-                    
-                    
+                    <img class="profile_img" src="{% static '/img/profile.png' %}" alt="">
+                    <a class="a-tag" href="#">Username</a>
+                    <a href="{% url 'accounts:log-out' %}"><button style="font-size: 13px; font-family: sans-serif; margin-left: 100px; background-color: white; border: none; color: #1877F2;outline: none;">LOGIN</button></a>
                 </div>
                 {% endif %}
-
                 <div style="display: flex; justify-content: center; margin-right: 47px;">
                     <p style="font-size: 15px; font-family: sans-serif;color: rgba(0, 0, 0, 0.6);">Suggestions for you</p>
                     <a href="#"><button style="font-size: 13px; font-family: sans-serif; margin-left: 100px; background-color: white; border: none; color: black">See All</button></a>
                 </div>
-
-                  
                 {% for post in posts %}
-                 
                 <div class="div-profile" >
                     {%if post.account.image %}
                         <img  class="profile_img" src="{{post.account.image.url}}" alt="">
                         <div style="margin-top: 8px;">
-                            <a class="a-tag" href="{% url 'accounts:profile_account' post.account.slug %}   ">{{post.account.username}}</a>
-                            
+                            <a class="a-tag" href="{% url 'accounts:profile_account' post.account.slug %}">{{post.account.username}}</a>
                             <p style="font-size: 13px; color:rgba(0, 0, 0, 0.6);">Follow by aliyevvf</p>
                         </div>
                         {%else%}
@@ -148,76 +135,67 @@
                         <div>
                             <a class="a-tag" href="{% url 'accounts:profile_account' request.user.slug %}   ">{{post.account.username}}</a>
                             <p style="font-size: 13px; color:rgba(0, 0, 0, 0.6);">Follow by aliyevvf</p>
-                            
                         </div>
                         {%endif%}
                     <a href="#"><button style="font-size: 13px; font-family: sans-serif; margin-left: 80px; background-color: white; border: none; color: #1877F2;">Follow</button></a>
                 </div>
-                 
                 {% endfor %}
-                
             </div>
-             </div>
         </div>
-    
+    </div>
+    <div id="myOverlayy" class="overlayy">
+        <span class="closebtnn" onclick="closeSearchh()" title="Close Overlay">×</span>
+        <div class="overlayy-content">
+            <form action=" ">
+                <div class="sec" > 
+                    <div class="cardd">
+                        <div class="cardd-top">
+                            <div class="headerrr">
+                                <div class="leftt">
+                                    <img src="https://iatkv.tmgrup.com.tr/a70cc3/616/321/0/0/1200/624?u=https%3A%2F%2Fitkv.tmgrup.com.tr%2F2020%2F12%2F26%2Fyeni-yilda-kurtlar-vadisi-ve-polat-alemdar-surprizi-vaziyet-alin-kursunlar-havada-gezecek-1609002491121.jpg" alt="">
+                                    <span>elcin.aliyev</span>
+                                    <span>3h</span>
+                                </div>
+                                <div class="rightt">
+                                    <i class="fa-solid fa-pause"></i>
+                                    <i class="fa-solid fa-volume-xmark"></i>
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </div>
+                            </div>
+                            <div class="cardd-image">
+                                <div class="bgg"></div>
+                            </div>
+                        </div>
+                        <footer style="display: flex;">
+                            <input type="textt" placeholder="Relp to elcin.aliyev..">
+                            <h2>
+                                <i class="fa-solid fa-heart icoo"></i> 
+                                <i class="fa-regular fa-paper-plane"></i>
+                            </h2>
+                        </footer>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
-
-        <div id="myOverlayy" class="overlayy">
-            <span class="closebtnn" onclick="closeSearchh()" title="Close Overlay">×</span>
-            <div class="overlayy-content">
-              <form action=" ">
-                     <div class="sec" > 
-                  <div class="cardd">
-                      <div class="cardd-top">
-                          <div class="cardd-loading"></div>
-                          <div class="headerrr">
-                              <div class="leftt">
-                                  <img 			src="https://iatkv.tmgrup.com.tr/a70cc3/616/321/0/0/1200/624?u=https%3A%2F%2Fitkv.tmgrup.com.tr%2F2020%2F12%2F26%2Fyeni-yilda-kurtlar-vadisi-ve-polat-alemdar-surprizi-vaziyet-alin-kursunlar-havada-gezecek-1609002491121.jpg" alt="">
-                                   <span>elcin.aliyev</span>
-                                   <span>3h</span>
-                              </div>
-                              <div class="rightt">
-                                  <i class="fa-solid fa-pause"></i>
-                                  <i class="fa-solid fa-volume-xmark"></i>
-                                  <i class="fa-solid fa-ellipsis"></i>
-                              </div>
-                          </div>
-                          <div class="cardd-image">
-                              <div class="bgg"></div>
-                          </div>
-                      </div>
-                      <footer style="display: flex;">
-                          <input type="textt" placeholder="Relp to elcin.aliyev..">
-                          <h2>
-                               <i class="fa-solid fa-heart icoo"></i> 
-                              <i class="fa-regular fa-paper-plane"></i>
-                          </h2>
-                      </footer>
-                  </div>
-              </div>
-              </form>
-            </div>
-          </div>
-
-          <script>
+        <script>
             function openSearchh() {
-              document.getElementById("myOverlayy").style.display = "block";
+                document.getElementById("myOverlayy").style.display = "block";
             }
             
             function closeSearchh() {
-              document.getElementById("myOverlayy").style.display = "none";
+                document.getElementById("myOverlayy").style.display = "none";
             }
-            </script>
+        </script>
                  
-<!-- popap -->
-<script>
-function openForm() {
-  document.getElementById("myForm").style.display = "block";
-}
-
-function closeForm() {
-  document.getElementById("myForm").style.display = "none";
-}
-</script>
+        <script>
+            function openForm() {
+                document.getElementById("myForm").style.display = "block";
+        }
+            function closeForm() {
+                document.getElementById("myForm").style.display = "none";
+        }
+        </script>
 
 {% endblock %}

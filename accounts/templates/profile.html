@@ -60,7 +60,9 @@
                                                     <div class="full" style="border: 1px solid rgba(0,0,0,.125);padding-top: 15px;">
                                                         <div class="card-header"  >
                                                             <div class="card-hover" style="padding-top: 15px;">
-                                                                <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;margin-left: 12px; " src="{{user.image.url}}" alt="">
+                                                                <a href="{% url 'accounts:profile_account' post.account.slug %}">
+                                                                    <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;margin-left: 12px; " src="{{user.image.url}}" alt="">
+                                                                </a>
                                                                 <a href="{% url 'accounts:profile_account' post.account.slug %}">
                                                                 <span  style="color: black;margin-left: 10px;cursor: pointer;">{{user.username}}</span>
                                                                 </a>
@@ -73,7 +75,9 @@
                                                                 <div>
                                                                     <div class="card-hover "  >
                                                                     {%if request.user.image %}
-                                                                        <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;" src="{{post.account.image.url}}" alt="">
+                                                                        <a href="{% url 'accounts:profile_account' post.account.slug %}">
+                                                                            <img style="cursor: pointer;border-radius: 50%;width: 45px;height: 45px;" src="{{post.account.image.url}}" alt="">
+                                                                        </a>
                                                                         <a href="{% url 'accounts:profile_account' post.account.slug %}">
                                                                         <span style=" margin-left: 20px;cursor: pointer;color: black;">{{post.account.username }}      
                                                                         </a>

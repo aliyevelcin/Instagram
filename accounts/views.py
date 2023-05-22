@@ -4,9 +4,9 @@ from django.contrib.auth import authenticate, login as dj_login
 from django.contrib.auth.hashers import make_password
 from django.views.generic import DetailView, CreateView
 from accounts.forms import RegisterForm, LoginForm
-from django.contrib.auth.views import LoginView, PasswordChangeView
+from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordResetView, PasswordResetConfirmView
 from django.urls import reverse_lazy
-from accounts.forms import ThePasswordChangeForm
+from accounts.forms import ThePasswordChangeForm, ResetPasswordConfirmForm, ResetPasswordForm
 
 class ProfileView(DetailView):
     model = User
@@ -38,4 +38,17 @@ def update(request):
 class UpdatePasswordView(PasswordChangeView):
     template_name = 'update.html'
     form_class = ThePasswordChangeForm
+    success_url = reverse_lazy('accounts:login')
+
+
+class ForgetPasswordView(PasswordResetView):
+    form_class = ResetPasswordForm
+    template_name = 'forget_password.html'
+    success_url = reverse_lazy('accounts:login')
+    email_template_name = 'password_reset_email.html'
+
+
+class ResetPasswordView(PasswordResetConfirmView):
+    form_class = ResetPasswordConfirmForm
+    template_name= "password_reset_confirm.html" 
     success_url = reverse_lazy('accounts:login')
