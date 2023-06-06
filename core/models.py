@@ -10,5 +10,12 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+class Story(models.Model):
+    image = models.ImageField('Image',upload_to='banners/', null=True, blank=True)
+    account = models.ForeignKey(User, on_delete=models.CASCADE, db_index=True, related_name='stories', null=True, blank=True)
+    active = models.BooleanField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
 
 # Create your models here.

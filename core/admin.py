@@ -1,5 +1,5 @@
 from django.contrib import admin
+from core.models import Post, Story
 
-from core.models import Post 
-admin.site.register([Post,])
+admin.site.register([Post, Story,])
 # Register your models here.

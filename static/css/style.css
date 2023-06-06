@@ -3,7 +3,9 @@ body{
     place-items: center;
     
 }
-
+.box{
+    cursor: pointer;
+}
 .box .img{
     width: 60px;
     height: 60px;
@@ -152,12 +154,6 @@ body{
     color: #ccc;
   }
    
-   
-  
-   
-  
-  
-      
       .sec{
           height: 100vh;
           display: grid;
@@ -166,9 +162,9 @@ body{
       }
       
       .cardd{
-          width: 300px;
+          
           height:500px ;
-          background-color: green;
+          background-color: rgb(47, 48, 47);
       }
       
       /* andimation */
@@ -212,11 +208,12 @@ body{
           gap: 50px;
       }
       
-      .leftt{
-          display: flex;
-          gap: 10px;
-          align-items: center;
-      }
+.leftt{
+    cursor: pointer !important;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
       
       .leftt img{
           width: 40px;
@@ -258,7 +255,7 @@ body{
       }
       
       .bgg{
-          width: 90%;
+          width: 350px;
           height: 40vh;
            
       }

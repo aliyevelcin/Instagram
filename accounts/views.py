@@ -25,15 +25,6 @@ class LoginUserView(LoginView):
     template_name = "login.html"
     form_class = LoginForm
 
-
-# def update(request):
-#     if request.method == 'POST':
-#         username = request.POST.get('username')
-         
-#         user = authenticate(request, username=username )
-#         dj_update(request,user)
-#         return redirect('/')
-#     return render(request, 'update.html')
  
 class UpdatePasswordView(PasswordChangeView):
     template_name = 'update.html'

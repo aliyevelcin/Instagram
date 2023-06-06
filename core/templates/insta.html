@@ -8,33 +8,90 @@
             <div class="col-md-6 md-6">
                 <div class="ove" style="width: 700px; overflow-y: hidden; overflow-x: scroll;">
                     <ul class="el" style="list-style-type: none;display: flex;padding-left: 20px;padding-right: 20px;padding-top: 35px;"   >
-                        {% for user in users %}
-                        {%if user != request.user%}
+                        {% for story in storys %}
+                      
                         <li>
+                            <script>
+                                function openSearchh{{story.id}}() {
+                                    document.getElementById("myOverlayy{{story.id}}").style.display = "block";
+                                }
+                                
+                                function closeSearchh{{story.id}}() {
+                                    document.getElementById("myOverlayy{{story.id}}").style.display = "none";
+                                }
+                            </script>
+                            
+                            <div id="myOverlayy{{story.id}}" class="overlayy">
+                                <span class="closebtnn" onclick="closeSearchh{{story.id}}()" title="Close Overlay">×</span>
+                                <div class="overlayy-content">
+                                    {% for story in request.user.story %}
+                                        {%if story.active  %}
+                                            <form action=" ">
+                                                
+                                                <div class="sec" > 
+                                                    <div class="cardd">
+                                                        <div class="cardd-top" style="padding-top: 20px;">
+                                                            
+                                                            <div class="headerrr">
+                                                                <div class="leftt" style="cursor: pointer;">
+                                                                    {%if story.account.image  %}
+                                                                        <img style="cursor: pointer;" src="{{story.account.image.url}}" alt="">
+                                                                        <span style="cursor: pointer;">{{story.account.username}}</span>
+                                                                    {%else%}
+                                                                    <img  src="{% static '/img/profile.png' %}" alt="">
+                                                                    <span>{{story.account.username}}</span>
+                                                                    {%endif%}
+                                                                </div>
+                                                                <div class="rightt">
+                                                                    <i class="fa-solid fa-pause"></i>
+                                                                    <i class="fa-solid fa-volume-xmark"></i>
+                                                                    <i class="fa-solid fa-ellipsis"></i>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="cardd-image">
+                                                            
+                                                                <div class="bgg">
+                                                                    <img  style="width: 100% !important;" src="{{story.image.url}}" alt="">
+                                                                </div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        {%endif%}
+                                    {%endfor%}
+                                </div>
+                            </div>
+                            
+                            
                             <div>
                                 <div class="box">
-                                    {%if user.image %}
-                                        <div onclick="openSearchh()" class="img">
-                                            <img src="{{user.image.url}}" alt="" srcset="">
+                                    {%if story.account.image %}
+                                        <div onclick="openSearchh{{story.id}}()" class="img">
+                                            <img style="width: 100%;" src="{{story.account.image.url}}" alt="" srcset="">
                                         </div>
                                         <div class="text">
-                                            <p class="len">{{ user.username }}</p> 
+                                            <p class="len">{{ story.account.username }}</p> 
                                         </div>
                                     {%else%}
-                                        <div onclick="openSearchh()" class="img">
-                                            <img src="{% static '/img/profile.png' %}" alt="" srcset="">
+                                        <div onclick="openSearchh{{story.id}}()" class="img">
+                                            <img  style="width: 100%;" src="{% static '/img/profile.png' %}" alt="" srcset="">
                                         </div>
                                         <div class="text">
-                                            <p class="len">{{ user.username }}</p> 
+                                            <p class="len">{{ story.account.username }}</p> 
                                         </div>   
                                     {%endif%}
                                 </div>
                             </div>
                         </li>
-                        {%endif%}
+                        
                         {% endfor %}
                     </ul>
                 </div>
+
                 <section>
                     <main class="content" >
                         <div class="res-1 " style="padding-bottom: 50px;padding-left: 90px;padding-right: 90px;">
@@ -144,41 +201,7 @@
             </div>
         </div>
     </div>
-    <div id="myOverlayy" class="overlayy">
-        <span class="closebtnn" onclick="closeSearchh()" title="Close Overlay">×</span>
-        <div class="overlayy-content">
-            <form action=" ">
-                <div class="sec" > 
-                    <div class="cardd">
-                        <div class="cardd-top">
-                            <div class="headerrr">
-                                <div class="leftt">
-                                    <img src="https://iatkv.tmgrup.com.tr/a70cc3/616/321/0/0/1200/624?u=https%3A%2F%2Fitkv.tmgrup.com.tr%2F2020%2F12%2F26%2Fyeni-yilda-kurtlar-vadisi-ve-polat-alemdar-surprizi-vaziyet-alin-kursunlar-havada-gezecek-1609002491121.jpg" alt="">
-                                    <span>elcin.aliyev</span>
-                                    <span>3h</span>
-                                </div>
-                                <div class="rightt">
-                                    <i class="fa-solid fa-pause"></i>
-                                    <i class="fa-solid fa-volume-xmark"></i>
-                                    <i class="fa-solid fa-ellipsis"></i>
-                                </div>
-                            </div>
-                            <div class="cardd-image">
-                                <div class="bgg"></div>
-                            </div>
-                        </div>
-                        <footer style="display: flex;">
-                            <input type="textt" placeholder="Relp to elcin.aliyev..">
-                            <h2>
-                                <i class="fa-solid fa-heart icoo"></i> 
-                                <i class="fa-regular fa-paper-plane"></i>
-                            </h2>
-                        </footer>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+    
 
         <script>
             function openSearchh() {
