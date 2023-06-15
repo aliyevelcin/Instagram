@@ -15,7 +15,6 @@ class MainView(TemplateView):
         context["posts"] = Post.objects.order_by('-id')
         context["users"] = User.objects.order_by('-id')
         context["storys"] = Story.objects.order_by('-id')
-
         return context
 
 

@@ -8,80 +8,82 @@
             <div class="col-md-6 md-6">
                 <div class="ove" style="width: 700px; overflow-y: hidden; overflow-x: scroll;">
                     <ul class="el" style="list-style-type: none;display: flex;padding-left: 20px;padding-right: 20px;padding-top: 35px;"   >
-                        {% for story in storys %}
-                      
+                        {% for user in users %}
+                       
                         <li>
                             <script>
-                                function openSearchh{{story.id}}() {
-                                    document.getElementById("myOverlayy{{story.id}}").style.display = "block";
+                                function openSearchh{{user.id}}() {
+                                    document.getElementById("myOverlayy{{user.id}}").style.display = "block";
                                 }
                                 
-                                function closeSearchh{{story.id}}() {
-                                    document.getElementById("myOverlayy{{story.id}}").style.display = "none";
+                                function closeSearchh{{user.id}}() {
+                                    document.getElementById("myOverlayy{{user.id}}").style.display = "none";
                                 }
                             </script>
+
+                             
                             
-                            <div id="myOverlayy{{story.id}}" class="overlayy">
-                                <span class="closebtnn" onclick="closeSearchh{{story.id}}()" title="Close Overlay">×</span>
+                            
+                            <div id="myOverlayy{{user.id}}" class="overlayy">
+                                <span class="closebtnn" onclick="closeSearchh{{user.id}}()" title="Close Overlay">×</span>
                                 <div class="overlayy-content">
-                                    {% for story in request.user.story %}
-                                        {%if story.active  %}
-                                            <form action=" ">
-                                                
-                                                <div class="sec" > 
-                                                    <div class="cardd">
-                                                        <div class="cardd-top" style="padding-top: 20px;">
-                                                            
-                                                            <div class="headerrr">
-                                                                <div class="leftt" style="cursor: pointer;">
-                                                                    {%if story.account.image  %}
-                                                                        <img style="cursor: pointer;" src="{{story.account.image.url}}" alt="">
-                                                                        <span style="cursor: pointer;">{{story.account.username}}</span>
-                                                                    {%else%}
-                                                                    <img  src="{% static '/img/profile.png' %}" alt="">
-                                                                    <span>{{story.account.username}}</span>
-                                                                    {%endif%}
-                                                                </div>
-                                                                <div class="rightt">
-                                                                    <i class="fa-solid fa-pause"></i>
-                                                                    <i class="fa-solid fa-volume-xmark"></i>
-                                                                    <i class="fa-solid fa-ellipsis"></i>
-                                                                </div>
-                                                            </div>
-                                                            
-                                                            <div class="cardd-image">
-                                                            
-                                                                <div class="bgg">
-                                                                    <img  style="width: 100% !important;" src="{{story.image.url}}" alt="">
-                                                                </div>
+                                                <div class="your-class">
+                                                    {% for story in user.stories.all %}
+                                                    <div> 
+                                                            <div class="sec" > 
+                                                                <div class="cardd">
+                                                                    <div class="cardd-top" style="padding-top: 20px;">
+                                                                        <div class="headerrr">
+                                                                            <div class="leftt" style="cursor: pointer;">
+                                                                                {%if user.image %}
+                                                                                    <img style="cursor: pointer;" src="{{user.image.url}}" alt="">
+                                                                                    <span style="cursor: pointer;">{{user.username}}</span>
+                                                                                {% else %}
+                                                                                <img  src="{% static '/img/profile.png' %}" alt="">
+                                                                                <span>{{user.username}}</span>
+                                                                                {% endif %}
+                                                                            </div>
+                                                                            <div class="rightt">
+                                                                                <i class="fa-solid fa-pause"></i>
+                                                                                <i class="fa-solid fa-volume-xmark"></i>
+                                                                                <i class="fa-solid fa-ellipsis"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="cardd-image">
+                                                                        
+                                                                            <div class="bgg">
+                                                                                <img  style="width: 100% !important;" src="{{story.image.url}}" alt="">
+                                                                            </div>
+                                                                            
+                                                                        </div>
+                                                                    </div>
                                                                 
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    
                                                     </div>
-                                                </div>
-                                            </form>
-                                        {%endif%}
-                                    {%endfor%}
+
+                                                            {% endfor %}  
+                                                    </div>
+
+                                                    
                                 </div>
                             </div>
-                            
-                            
+                              
                             <div>
                                 <div class="box">
-                                    {%if story.account.image %}
-                                        <div onclick="openSearchh{{story.id}}()" class="img">
-                                            <img style="width: 100%;" src="{{story.account.image.url}}" alt="" srcset="">
+                                    {%if user.image %}
+                                        <div onclick="openSearchh{{user.id}}()" class="img">
+                                            <img style="width: 100%;" src="{{user.image.url}}" alt="" srcset="">
                                         </div>
                                         <div class="text">
-                                            <p class="len">{{ story.account.username }}</p> 
+                                            <p class="len">{{ user.username }}</p> 
                                         </div>
                                     {%else%}
-                                        <div onclick="openSearchh{{story.id}}()" class="img">
+                                        <div onclick="openSearchh{{user.id}}()" class="img">
                                             <img  style="width: 100%;" src="{% static '/img/profile.png' %}" alt="" srcset="">
                                         </div>
                                         <div class="text">
-                                            <p class="len">{{ story.account.username }}</p> 
+                                            <p class="len">{{ user.username }}</p> 
                                         </div>   
                                     {%endif%}
                                 </div>
@@ -156,6 +158,7 @@
                     </main>
                 </section>  
             </div>
+            
             <div class="col-md-4 basqa" style="padding-left: 50px;">
                 {% if request.user.is_authenticated %}
                 <div class="main-profile">
@@ -201,8 +204,50 @@
             </div>
         </div>
     </div>
-    
-
+<div>
+    <div class="your-class">
+        <div>your content</div>
+        <div>your content</div>
+        <div>your content</div>
+      </div>
+    <script>$('.responsive').slick({
+        dots: true,
+        infinite: false,
+        speed: 300,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3,
+              infinite: true,
+              dots: true
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+          // You can unslick at a given breakpoint now by adding:
+          // settings: "unslick"
+          // instead of a settings object
+        ]
+      });
+              </script>
+</div>
+     
         <script>
             function openSearchh() {
                 document.getElementById("myOverlayy").style.display = "block";
@@ -220,6 +265,18 @@
             function closeForm() {
                 document.getElementById("myForm").style.display = "none";
         }
-        </script>
+        </script> 
 
+                    
+<script>
+    $('.your-class').slick({
+  dots: true,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 1,
+  adaptiveHeight: true
+});
+</script>
+                     
+ 
 {% endblock %}
